@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @SpringBootApplication
-public class ws0425 {
+public class admin {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ws0425.class, args);
+		SpringApplication.run(admin.class, args);
 	}
 
 	@Bean
