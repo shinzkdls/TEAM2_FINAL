@@ -14,8 +14,6 @@ public class ChartController {
     @RequestMapping("")
     public String index(Model model) {
 
-
-
         model.addAttribute("center", dir + "charts");
         return "index";
     }
