@@ -66,7 +66,7 @@
                                         <img src="/uimg/${obj.imgname}"><br/>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="item/detail?id=${obj.id}" class="btn btn-info" role="button">Detail</a>
+                                        <a href="/item/detail?id=${obj.id}" class="btn btn-info" role="button">Detail</a>
                                         <a href="#" class="btn btn-info" data-dismiss="modal" role="button">Close</a>
                                     </div>
                                 </div>
