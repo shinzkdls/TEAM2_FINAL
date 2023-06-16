@@ -77,7 +77,7 @@
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="/cust/all">
-                <i class="fas fa-fw fa-cog"></i>
+                <i class="fas fa-fw fa-regular fa-user"></i>
                 <span>Customer</span>
             </a>
 <%--            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">--%>
@@ -92,7 +92,7 @@
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="/recipe/all">
-                <i class="fas fa-fw fa-wrench"></i>
+                <i class="fas fa-fw fa-solid fa-utensils"></i>
                 <span>Recipe</span>
             </a>
         </li>
@@ -107,16 +107,24 @@
 
         <!-- Nav Marker - Utilities Collapse Menu -->
         <li class="nav-item">
+            <a class="nav-link collapsed" href="/contact/all">
+                <i class="fas fa-fw fa-solid fa-phone"></i>
+                <span>Contact</span>
+            </a>
+        </li>
+
+        <!-- Nav Marker - Utilities Collapse Menu -->
+        <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
+                <i class="fas fa-fw fa-solid fa-exclamation"></i>
                 <span>Notice</span>
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Customer Managements:</h6>
-                    <a class="collapse-item" href="/notice/add">add</a>
-                    <a class="collapse-item" href="/notice/all">all</a>
+                    <h6 class="collapse-header">Notice Managements:</h6>
+                    <a class="collapse-item" href="/notice/all">View All Notices</a>
+                    <a class="collapse-item" href="/notice/add">Register New Notice</a>
                 </div>
             </div>
         </li>
@@ -162,6 +170,13 @@
             <a class="nav-link" href="/tables">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Tables</span></a>
+        </li>
+
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link" href="/pic">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Picture</span></a>
         </li>
 
         <!-- Nav Item - Live Chart -->

@@ -156,6 +156,12 @@ public class MainController {
         String imageUrl = chatgptService.imageGenerate("boy");
         log.info(imageUrl);  // image url
         model.addAttribute("center", "gpt");
+        return str;
+    }
+
+    @RequestMapping("/pic")
+    public String pic(Model model){
+        model.addAttribute("center","pic");
         return "index";
     }
 }
