@@ -1,6 +1,6 @@
 package com.kbstar.controller;
 
-import com.kbstar.dto.Adm;
+import com.kbstar.dto.Admin;
 import com.kbstar.service.AdmService;
 import com.kbstar.service.MarkerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class AjaxImplController {
     @RequestMapping("/checkid")
     public Object checkid(String id) throws Exception {
         int result = 0;
-        Adm adm = null;
+        Admin adm = null;
         adm = admService.get(id);
         if(adm != null){
             result =1;

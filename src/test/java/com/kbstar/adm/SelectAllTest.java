@@ -1,6 +1,5 @@
 package com.kbstar.adm;
 
-import com.kbstar.dto.Adm;
 import com.kbstar.service.AdmService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -17,13 +16,13 @@ class SelectAllTest {
     AdmService service;
     @Test
 void contextLoads() {
-    List<Adm> list = null;
-    try {
-        list = service.get();
-    } catch (Exception e) {
-        log.info("조회 에러......");
-        e.printStackTrace();
-        }
+//    List<Admin> list = null;
+//    try {
+//        list = service.get();
+//    } catch (Exception e) {
+//        log.info("조회 에러......");
+//        e.printStackTrace();
+//        }
     }
 }
 

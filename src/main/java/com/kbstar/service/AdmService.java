@@ -1,6 +1,6 @@
 package com.kbstar.service;
 
-import com.kbstar.dto.Adm;
+import com.kbstar.dto.Admin;
 import com.kbstar.frame.KBService;
 import com.kbstar.mapper.AdmMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class AdmService implements KBService<String, Adm> {
+public class AdmService implements KBService<String, Admin> {
     @Autowired
     AdmMapper mapper;
 
@@ -23,7 +23,7 @@ public class AdmService implements KBService<String, Adm> {
      * @param adm
      **/
     @Override
-    public void register(Adm adm) throws Exception {
+    public void register(Admin adm) throws Exception {
         mapper.insert(adm);
     }
 
@@ -33,17 +33,17 @@ public class AdmService implements KBService<String, Adm> {
     }
 
     @Override
-    public void modify(Adm adm) throws Exception {
+    public void modify(Admin adm) throws Exception {
         mapper.update(adm);
     }
 
     @Override
-    public Adm get(String s) throws Exception {
+    public Admin get(String s) throws Exception {
         return mapper.select(s);
     }
 
     @Override
-    public List<Adm> get() throws Exception {
+    public List<Admin> get() throws Exception {
         return mapper.selectall();
     }
 }

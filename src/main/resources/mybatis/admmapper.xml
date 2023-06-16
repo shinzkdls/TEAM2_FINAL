@@ -4,20 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kbstar.mapper.AdmMapper">
 
-    <select id="select" parameterType="String" resultType="adm">
-        SELECT * FROM adm WHERE id=#{id}
+    <select id="select" parameterType="String" resultType="admin">
+        SELECT * FROM admin WHERE ADMINID=#{ADMINID}
     </select>
-    <select id="selectall" resultType="adm">
-        SELECT * FROM adm
+    <select id="selectall" resultType="admin">
+        SELECT * FROM admin
     </select>
-    <insert id="insert" parameterType="adm">
-        INSERT INTO adm VALUES (#{id},#{pwd},#{lev})
+    <insert id="insert" parameterType="admin">
+        INSERT INTO admin VALUES (ADMINPIN.NEXTVAL, #{ADMINID},#{ADMINNAME},#{PASSWORD}, sysdate)
     </insert>
-    <update id="update" parameterType="adm">
-        UPDATE adm SET lev=#{lev},pwd=#{pwd} WHERE id=#{id}
+    <update id="update" parameterType="admin">
+        UPDATE admin SET pwd=#{PASSWORD} WHERE ADMINID=#{ADMINID}
     </update>
     <delete id="delete" parameterType="String"> /*여기서 스트링은 웨얼값에 있는 id의 타입이다*/
-        DELETE FROM adm WHERE id=#{id}
+        DELETE FROM admin WHERE ADMINID=#{ADMINID}
     </delete>
 
 </mapper>
