@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Kolly on the Table - Administrator</title>
+    <title>Administrator - Kolly on the Table</title>
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -35,6 +35,10 @@
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <%--jquery--%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -166,6 +170,33 @@
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Live Chart</span></a>
         </li>
+
+        <!-- Nav Item - websocket -->
+        <c:if test="${loginadm != null}">
+            <li class="nav-item">
+                <a class="nav-link" href="/websocket">
+                    <i class="fas fa-fw fa-solid fa-comments"></i>
+                    <span>websocket</span></a>
+            </li>
+        </c:if>
+
+
+        <!-- Nav Item - Chat bot -->
+        <li class="nav-item">
+            <a class="nav-link" href="/chatbot">
+                <i class="fas fa-fw fa-solid fa-headset"></i>
+                <span>Chat bot</span></a>
+        </li>
+
+        <!-- Nav Item - Chat GPT -->
+        <li class="nav-item">
+            <a class="nav-link" href="/gpt">
+                <i class="fas fa-fw fa-solid fa-brain"></i>
+                <span>Chat GPT</span></a>
+        </li>
+
+
+
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
@@ -435,7 +466,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2021</span>
+                    <span>Kolly on the table Admin system by team6</span>
                 </div>
             </div>
         </footer>

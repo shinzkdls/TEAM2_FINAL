@@ -2,10 +2,12 @@ package com.kbstar.controller;
 
 import com.kbstar.dto.Admin;
 import com.kbstar.service.AdmService;
+import io.github.flashvayne.chatgpt.service.ChatgptService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +22,9 @@ public class MainController {
     private BCryptPasswordEncoder encoder;
     @Autowired
     AdmService admservice;
-    // 127.0.0.1
+
+    @Value("${adminserver}")
+    String adminserver;
     @RequestMapping("/")
     public String main(HttpSession session) throws Exception {
         Admin adm= null;
@@ -135,4 +139,23 @@ public class MainController {
         return "redirect:/adminfo?id=" + adm.getAdminId();
     }
 
+    @RequestMapping("/websocket")
+    public String websocket(Model model) {
+        model.addAttribute("adminserver", adminserver);
+        model.addAttribute("center", "websocket");
+        return "index";
+    }
+
+    @Autowired
+    ChatgptService chatgptService;
+    @RequestMapping("/gpt")
+    public String gpt(Model model) {
+        String str = chatgptService.sendMessage("한국에서 가장 유명한것이 뭐니");
+        log.info("------------------------------------");
+        log.info(str);
+        String imageUrl = chatgptService.imageGenerate("boy");
+        log.info(imageUrl);  // image url
+        model.addAttribute("center", "gpt");
+        return "index";
+    }
 }

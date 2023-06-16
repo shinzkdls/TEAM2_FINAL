@@ -18,7 +18,7 @@
         <%-- 실제 만들어지는 영역 --%>
         <div class="card-body">
             <div id="container">
-                <h3>${loginadm.id} 님 Admin 화면 접속을 환영합니다.</h3>
+                <h3>${loginadm.adminName} 님 Admin 화면 접속을 환영합니다.</h3>
             </div>
 
         </div>
