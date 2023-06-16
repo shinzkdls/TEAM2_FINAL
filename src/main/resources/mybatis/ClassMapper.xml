@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kbstar.mapper.ClassMapper">
+
+    <select id="select" parameterType="Integer" resultType="ClassBasic">
+        SELECT * FROM class_basic
+        WHERE classpin=#{classpin}
+    </select>
+
+    <select id="selectall" resultType="ClassBasic">
+        SELECT * FROM class_basic
+        ORDER BY classpin ASC
+    </select>
+
+</mapper>

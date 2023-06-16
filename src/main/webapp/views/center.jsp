@@ -1,10 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<link rel="stylesheet" type="text/css"
+      href="https://cdn.jsdelivr.net/gh/lafeber/world-flags-sprite/stylesheets/flags32-both.css" />
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+  $(function () {
+    charts1.init();
+    $('#month_val').change(function () {
+      charts1.getdatasales();
+    });
+    charts2.init();
+  })
 
+  let charts1 = {
+    init: function () {
+      this.getdatasales();
+    },
+    getdatasales: function () {
+      var month_val = $('#month_val').val();
+      $.ajax({
+        url: '/getdatasales',
+        data: {month: month_val},
+        success: function (result) {
+          charts1.display(result);
+        }
+      });
+    },
+    display: function (result) {
+      Highcharts.chart('myAreaChart1', {
+        chart: {
+          type: 'line'
+        },
+        title: {
+          text: 'Daily Sales'
+        },
+        xAxis: {
+          categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+        },
+        yAxis: {
+          title: {
+            text: 'Daily Sales(won)'
+          }
+        },
+        plotOptions: {
+          line: {
+            dataLabels: {
+              enabled: true
+            },
+            enableMouseTracking: false
+          }
+        },
+        series: [{
+          name: 'Daily Sales',
+          data: result
+        }]
+      });
+    }
+  }
+</script>
 <head>
   <title>main</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
       <%----------------------------------------------------------------------------------------------------------------%>
       <!-- Begin Page Content -->
@@ -114,7 +174,7 @@
               <!-- Card Header - Dropdown -->
               <div
                       class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                <h6 class="m-0 font-weight-bold text-primary">The Number of Users by Month</h6>
                 <div class="dropdown no-arrow">
                   <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -133,7 +193,33 @@
               <!-- Card Body -->
               <div class="card-body">
                 <div class="chart-area">
-                  <canvas id="myAreaChart"></canvas>
+                  <div class="card mb-4">
+                    <div class="card-header" style="display: flex; justify-content: space-between">
+                      <div>
+                        <i class="fas fa-chart-area me-1"></i>
+                        Daily Sales
+                      </div>
+                      <div class="col-sm-1.5">
+                        <select class="form-control" id="month_val" name="month_val" style="font-size: 8pt">
+                          <option value="01">Jan</option>
+                          <option value="02">Feb</option>
+                          <option value="03">Mar</option>
+                          <option value="04">Apr</option>
+                          <option value="05">May</option>
+                          <option value="06">Jun</option>
+                          <option value="07">Jul</option>
+                          <option value="08">Aug</option>
+                          <option value="09">Sep</option>
+                          <option value="10">Oct</option>
+                          <option value="11">Nov</option>
+                          <option value="12">Dec</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div id="myAreaChart1" width="100%" height="40"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
