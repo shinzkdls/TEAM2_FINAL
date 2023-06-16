@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Kolly on the Table - Administrator</title>
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -50,7 +50,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+            <div class="sidebar-brand-text mx-3">Kolly</div>
         </a>
 
         <!-- Divider -->
@@ -72,52 +72,47 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-               aria-expanded="true" aria-controls="collapseTwo">
+            <a class="nav-link collapsed" href="/cust/all">
                 <i class="fas fa-fw fa-cog"></i>
-                <span>Cust</span>
+                <span>Customer</span>
             </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Cust Managements:</h6>
-                    <a class="collapse-item" href="/cust/add">add</a>
-                    <a class="collapse-item" href="/cust/all">all</a>
-                </div>
-            </div>
+<%--            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">--%>
+<%--                <div class="bg-white py-2 collapse-inner rounded">--%>
+<%--                    <h6 class="collapse-header">Customer Managements:</h6>--%>
+<%--                    <a class="collapse-item" href="/cust/add">add</a>--%>
+<%--                    <a class="collapse-item" href="/cust/all">all</a>--%>
+<%--                </div>--%>
+<%--            </div>--%>
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-               aria-expanded="true" aria-controls="collapseUtilities">
+            <a class="nav-link collapsed" href="/recipe/all">
                 <i class="fas fa-fw fa-wrench"></i>
-                <span>Item</span>
+                <span>Recipe</span>
             </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Item Managements:</h6>
-                    <a class="collapse-item" href="/item/add">add</a>
-                    <a class="collapse-item" href="/item/all">all</a>
-
-                </div>
-            </div>
         </li>
 
         <!-- Nav Marker - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#marker_mgt"
-               aria-expanded="true" aria-controls="marker_mgt">
+            <a class="nav-link collapsed" href="/class/all">
                 <i class="fas fa-fw fa-wrench"></i>
-                <span>Marker</span>
+                <span>Class</span>
             </a>
-            <div id="marker_mgt" class="collapse" aria-labelledby="marker_mgt"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Marker Managements:</h6>
-                    <a class="collapse-item" href="/marker/add">add</a>
-                    <a class="collapse-item" href="/marker/all">all</a>
+        </li>
 
+        <!-- Nav Marker - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+               aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Notice</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Customer Managements:</h6>
+                    <a class="collapse-item" href="/notice/add">add</a>
+                    <a class="collapse-item" href="/notice/all">all</a>
                 </div>
             </div>
         </li>

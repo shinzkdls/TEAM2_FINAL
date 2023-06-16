@@ -6,8 +6,8 @@ import com.kbstar.mapper.CustMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+
 @Slf4j
 @Service
 public class CustService implements KBService<String, Cust> {
@@ -17,19 +17,14 @@ public class CustService implements KBService<String, Cust> {
 
     @Override
     public void register(Cust cust) throws Exception {
-        mapper.insert(cust);
-        // mapper.insert(cust);
-        log.info("Send Mail........."+cust.getId());
     }
 
     @Override
     public void remove(String s) throws Exception {
-        mapper.delete(s);
     }
 
     @Override
     public void modify(Cust cust) throws Exception {
-        mapper.update(cust);
     }
 
     @Override
@@ -41,6 +36,4 @@ public class CustService implements KBService<String, Cust> {
     public List<Cust> get() throws Exception {
         return mapper.selectall();
     }
-
-
 }
