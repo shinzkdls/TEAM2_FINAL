@@ -36,7 +36,7 @@
                 array.push(decodImg .charCodeAt(i));
             }
             const file = new Blob([new Uint8Array(array)], {type: 'image/jpeg'});
-            const fileName = 'snapshot_' + new Date().getMilliseconds() + '.jpg';
+            const fileName = new Date().getMilliseconds() +'_profileimg.jpg';
             let formData = new FormData();
             formData.append('file', file, fileName);
             $.ajax({
@@ -83,14 +83,14 @@
                     <div class="col-sm-8 text-left">
                         <h1>Pic</h1>
                         <hr>
-                        <video  id="myVideo" width="400" height="300" style="border: 1px solid #ddd;"></video>
-                        <canvas id="myCanvas" width="160" height="140" style="border: 1px solid #ddd;"></canvas><br>
-                        <input type=button value="Camera On" onclick="pic.getVideo();">
-                        <input type=button value="get Pic" onclick="pic.takeSnapshot();">
-                        <input type=button value="send Pic" onclick="pic.send();"><br>
-                        <input type=button value="Auto Pic" onclick="pic.takeAuto(5000);">
+                        <video id="myVideo" width="300" height="300" style="border: 1px solid #ddd;"></video>
+                        <canvas id="myCanvas" width="300" height="300" style="border: 1px solid #ddd;"></canvas><br>
+                        <input type=button class="btn btn-primary" value="Camera On" onclick="pic.getVideo();">&nbsp;
+                        <input type=button class="btn btn-primary" value="Take Pic" onclick="pic.takeSnapshot();">&nbsp;
+                        <input type=button class="btn btn-primary" value="Save Pic" onclick="pic.send();">&nbsp;
+                        <input type=button class="btn btn-primary" value="Auto Pic(3sec)" onclick="pic.takeAuto(3000);"><br/><br/>
                         <form id="cfr_form" action="/mycfr" method="/get">
-                            Image Name:<input type="text" name="imgname" id="imgname"><br>
+                            Image Name:<input type="text" class="form-control" style="width: 300px" name="imgname" id="imgname"><br>
                             <button type="submit" id="cfr_btn">CFR</button>
                         </form>
                         <h2>${result.emotion}</h2>

@@ -4,9 +4,12 @@ import com.kbstar.dto.Admin;
 import com.kbstar.dto.Sales;
 import com.kbstar.service.AdmService;
 import com.kbstar.service.MarkerService;
+import com.kbstar.util.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -16,6 +19,8 @@ public class AjaxImplController {
     MarkerService markerService;
     @Autowired
     AdmService admService;
+    @Value("${uploadimgdir}")
+    String imgdir;
 
     @RequestMapping("/checkid")
     public Object checkid(String id) throws Exception {
@@ -27,6 +32,14 @@ public class AjaxImplController {
         }
         return result;
     };
+
+    @RequestMapping("/saveimg")
+    public String saveimg(MultipartFile file){
+        String filename = file.getOriginalFilename();
+        FileUploadUtil.saveFile(file, imgdir);
+        return filename;
+    }
+
 
 //    @RequestMapping("/getdatasales")
 //    public Object getdatasales(String month) throws Exception {

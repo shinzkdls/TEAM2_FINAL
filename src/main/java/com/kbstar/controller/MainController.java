@@ -2,12 +2,14 @@ package com.kbstar.controller;
 
 import com.kbstar.dto.Admin;
 import com.kbstar.service.AdmService;
+import com.kbstar.util.SendMailUtil;
 import io.github.flashvayne.chatgpt.service.ChatgptService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,8 @@ public class MainController {
     private BCryptPasswordEncoder encoder;
     @Autowired
     AdmService admservice;
+    @Autowired
+    SendMailUtil sendMailUtil;
 
     @Value("${adminserver}")
     String adminserver;
@@ -160,8 +164,9 @@ public class MainController {
     }
 
     @RequestMapping("/pic")
-    public String pic(Model model){
+    public String pic(Model model) throws Exception {
         model.addAttribute("center","pic");
+        sendMailUtil.sendSimpleMessage("jhs4132@naver.com","회원가입을 축하드립니다.");
         return "index";
     }
 }

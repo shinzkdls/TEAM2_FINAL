@@ -70,7 +70,7 @@
 			<artifactId>jstl</artifactId>
 		</dependency>
 		<!--JSP Dev Setting 끝-->
-		<!--Logbakc-->
+		<!--Logback-->
 		<dependency>
 			<groupId>org.bgee.log4jdbc-log4j2</groupId>
 			<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
@@ -82,13 +82,19 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
-		<!-- websocket -->
+		<!-- json request -->
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<!-- json request end -->
 
+		<!-- websocket -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-websocket</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>webjars-locator-core</artifactId>
@@ -110,6 +116,22 @@
 		</dependency>
 		<!-- websocket end -->
 
+		<!-- jasypt library를 이용 -->
+		<dependency>
+			<groupId>com.github.ulisesbocchio</groupId>
+			<artifactId>jasypt-spring-boot-starter</artifactId>
+			<version>3.0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-test</artifactId>
+		</dependency>
+
+		<!--Email-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 
 		<!-- gpt -->
 		<dependency>
@@ -117,7 +139,6 @@
 			<artifactId>chatgpt-spring-boot-starter</artifactId>
 			<version>1.0.4</version>
 		</dependency>
-
 		<!-- gpt end -->
 
 	</dependencies>
