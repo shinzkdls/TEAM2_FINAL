@@ -14,7 +14,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpSession;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 
 @Slf4j
 @Controller
@@ -166,6 +173,15 @@ public class MainController {
     @RequestMapping("/pic")
     public String pic(Model model) throws Exception {
         model.addAttribute("center","pic");
+        return "index";
+    }
+
+    @RequestMapping("/chatbot")
+    public String chatbot(Model model, HttpSession session){
+//        if(session.getAttribute("logincust") == null){
+//            return "redirect:/login";
+//        }
+        model.addAttribute("center","chatbot");
         return "index";
     }
 }

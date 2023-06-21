@@ -4,7 +4,9 @@ import com.kbstar.dto.Admin;
 import com.kbstar.dto.Sales;
 import com.kbstar.service.AdmService;
 import com.kbstar.service.MarkerService;
+import com.kbstar.service.SalesService;
 import com.kbstar.util.FileUploadUtil;
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,8 @@ public class AjaxImplController {
     MarkerService markerService;
     @Autowired
     AdmService admService;
+    @Autowired
+    SalesService salesService;
     @Value("${uploadimgdir}")
     String imgdir;
 
@@ -41,16 +45,15 @@ public class AjaxImplController {
     }
 
 
-//    @RequestMapping("/getdatasales")
-//    public Object getdatasales(String month) throws Exception {
-//        List<Sales> list = null;
-//        list = salesService.getdatasales(month);
-//        JSONArray ja = new JSONArray();
-//        for (Sales obj : list) {
-//            ja.add(obj.getPrice());
-//        }
-//        return ja;
-//    }
+    @RequestMapping("/getdatasales")
+    public Object getdatasales(String month) throws Exception {
+        List<Sales> list = null;
+        JSONArray ja = new JSONArray();
+        for (Sales obj : list) {
+            ja.add(obj.getPrice());
+        }
+        return ja;
+    }
 
 
 }

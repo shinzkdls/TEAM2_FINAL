@@ -127,12 +127,11 @@
 			<artifactId>spring-boot-test</artifactId>
 		</dependency>
 
-		<!-- Email -->
+		<!--Email-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
-		<!-- Email End -->
 
 		<!-- gpt -->
 		<dependency>
@@ -141,6 +140,15 @@
 			<version>1.0.4</version>
 		</dependency>
 		<!-- gpt end -->
+
+
+		<!-- json request -->
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<!-- json end -->
 
 		<!-- firebase -->
 		<dependency>

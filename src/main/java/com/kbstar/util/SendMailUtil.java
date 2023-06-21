@@ -13,7 +13,7 @@ import java.util.Random;
 
 @Component
 public class SendMailUtil {
-    @Autowired
+    //@Autowired
     JavaMailSender emailSender;
     @Value("${adminmail.id}")
     private String id;
@@ -40,14 +40,14 @@ public class SendMailUtil {
         return message;
     }
     public void sendSimpleMessage(String to, String msg)throws Exception {
-        // TODO Auto-generated method stub
-        MimeMessage message = createMessage(to,msg);
-        try{//예외처리
-            emailSender.send(message);
-        }catch(MailException es){
-            es.printStackTrace();
-            throw new IllegalArgumentException();
-        }
+//        // TODO Auto-generated method stub
+////        MimeMessage message = createMessage(to,msg);
+//        try{//예외처리
+//            emailSender.send(message);
+//        }catch(MailException es){
+//            es.printStackTrace();
+//            throw new IllegalArgumentException();
+//        }
     }
 
     private MimeMessage createAuthMessage(String to, String msg)throws Exception{
