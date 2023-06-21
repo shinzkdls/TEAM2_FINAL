@@ -166,7 +166,6 @@ public class MainController {
     @RequestMapping("/pic")
     public String pic(Model model) throws Exception {
         model.addAttribute("center","pic");
-        sendMailUtil.sendSimpleMessage("jhs4132@naver.com","회원가입을 축하드립니다.");
         return "index";
     }
 }

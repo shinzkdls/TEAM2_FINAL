@@ -127,11 +127,12 @@
 			<artifactId>spring-boot-test</artifactId>
 		</dependency>
 
-		<!--Email-->
+		<!-- Email -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
+		<!-- Email End -->
 
 		<!-- gpt -->
 		<dependency>
@@ -140,6 +141,14 @@
 			<version>1.0.4</version>
 		</dependency>
 		<!-- gpt end -->
+
+		<!-- firebase -->
+		<dependency>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-admin</artifactId>
+			<version>8.1.0</version>
+		</dependency>
+		<!-- firebase end -->
 
 	</dependencies>
 

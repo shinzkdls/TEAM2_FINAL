@@ -26,10 +26,10 @@ public class SendMailUtil {
 
         String msgg="";
         msgg+= "<div style='margin:10px;'>";
-        msgg+= "<img style='width : 600px; margin : 0; padding : 0;' src=\"https://postfiles.pstatic.net/MjAyMzA2MTlfOTYg/MDAxNjg3MTU4MTM0NjQ0.X1dvra7Q30SHitO1BarUpbOQp-bkw8SMZ6f3yrx1bgYg.QCIO7VZGgk7B1UxRyzsAIi7lvSVbB2pbTzyEp6sX7hkg.PNG.jhs4132/1.png?type=w773\"/>";
+        msgg+= "<img style='width : 600px; margin : 0; padding : 0;' src=\"https://postfiles.pstatic.net/MjAyMzA2MjBfMTEz/MDAxNjg3MjE4ODkxMzcw.TspkIyK5NmvaOSuZqEaliZj4-O4wQUYYaRKdLf0tBocg.74eYfrH1jjPb82ac2YYi5as7EFvscx1gxPxJSVTPZEog.PNG.jhs4132/1.png?type=w773\"/>";
         msgg+= "<img style='width : 600px; margin : 0; padding : 0;' src=\"https://postfiles.pstatic.net/MjAyMzA2MTlfMTkw/MDAxNjg3MTY0MzExNTEz.m0q67KzcDOe_8SWK5vpsD7GtpOdLg_4cEXQJFR_sx_Ug.-4uaeffv-jjS6bitrmEhwBXc6rIElDPwls6zCbw64Xcg.PNG.jhs4132/2.png?type=w773\"/><br/>";
         msgg+= "<a href=\"http://localhost\"><img style='width : 600px; margin : 0; padding : 0;' src=\"https://postfiles.pstatic.net/MjAyMzA2MTlfMTI0/MDAxNjg3MTY0MTk2Mzk5.OUv68h0fsNsGJX-oT5xuivI0c_qp4IuQFyHmvg9Poncg.bstwLBuhizAZrAga7xrxw3FycoxmmDVJRSb3CGqYT8cg.PNG.jhs4132/4.png?type=w773\"></a><br/>";
-        msgg+= "<img style='width : 600px; margin : 0; padding : 0;' src=\"https://postfiles.pstatic.net/MjAyMzA2MTlfMTIg/MDAxNjg3MTYwMzQ5NjA0.pkCY3yDY6LXCEQPc1Vw4pUW8FX03EHt8hyEMt60O60kg.CB7pav2c0vD1MfRvfuq2z08q8HOXQtONkkv3LhYFqAcg.PNG.jhs4132/3.png?type=w773\"/><br/>";
+        msgg+= "<img style='width : 600px; margin : 0; padding : 0;' src=\"https://postfiles.pstatic.net/MjAyMzA2MjBfODIg/MDAxNjg3MjE4OTA0MTE5.vsIWrzmDilrr-RaVH7f7an1369cBrcZCveZ_ghoVY0Qg.icFb5VNElnpc3usw5CNryBrknaL_htYx824CYaPJXEog.PNG.jhs4132/4.png?type=w773\"/><br/>";
 //        msgg+= "<div align='center' style='border:1px solid black; font-family:verdana';>";
 //        msgg+= "<h3 style='color:blue;'>"+msg+"</h3>";
 //        msgg+= "</div>";
