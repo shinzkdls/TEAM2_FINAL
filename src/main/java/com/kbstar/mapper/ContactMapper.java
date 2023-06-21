@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface ContactMapper extends KBMapper<Integer, Contact> {
-
+    public void registerResponse(Contact contact);
 }

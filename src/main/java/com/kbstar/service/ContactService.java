@@ -21,8 +21,8 @@ public class ContactService implements KBService<Integer, Contact> {
     }
 
     @Override
-    public void remove(Integer integer) throws Exception {
-        mapper.delete(integer);
+    public void remove(Integer contactpin) throws Exception {
+        mapper.delete(contactpin);
     }
 
     @Override
@@ -31,12 +31,17 @@ public class ContactService implements KBService<Integer, Contact> {
     }
 
     @Override
-    public Contact get(Integer integer) throws Exception {
-        return mapper.select(integer);
+    public Contact get(Integer contactpin) throws Exception {
+        Contact contact =mapper.select(contactpin);
+        return contact;
     }
 
     @Override
     public List<Contact> get() throws Exception {
-        return mapper.selectall();
+        List<Contact> list=mapper.selectall();
+        return list;
+    }
+    public void registerResponse(Contact contact) throws Exception {
+        mapper.registerResponse(contact);
     }
 }

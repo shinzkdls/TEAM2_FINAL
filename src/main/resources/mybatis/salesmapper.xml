@@ -11,5 +11,13 @@
     <insert id="insert" parameterType="sales">
         INSERT INTO sales VALUES (TO_DATE(#{rdate},'YYYY-MM-DD'),#{price},#{gender})
     </insert>
+    <select id="getdatasales" parameterType="String" resultType="sales">
+        SELECT SUBSTR(TO_CHAR(RDATE, 'YYYYMMDD'), 1, 8) AS RDATE
+             , SUM(PRICE)                               AS PRICE
+        FROM SALES
+        WHERE SUBSTR(TO_CHAR(RDATE, 'YYYYMMDD'), 5, 2) = ${MONTH}
+        GROUP BY SUBSTR(TO_CHAR(RDATE, 'YYYYMMDD'), 1, 8)
+        ORDER BY RDATE
+    </select>
 
 </mapper>

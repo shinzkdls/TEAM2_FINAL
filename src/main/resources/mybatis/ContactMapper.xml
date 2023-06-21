@@ -7,12 +7,23 @@
 
     <select id="select" parameterType="Integer" resultType="Contact">
         SELECT * FROM contact
-        WHERE contactpin = #{contactpin}
+        WHERE CONTACTPIN = #{contactpin}
     </select>
 
     <select id="selectall" resultType="Contact">
         SELECT * FROM contact
-        ORDER BY contactpin ASC
+        ORDER BY CONTACTDATE ASC
     </select>
+
+    <update id="registerResponse" parameterType="Contact">
+        UPDATE contact
+        SET ANSWER = 'Y',
+        ADMINPIN = #{adminpin},
+        ADMINID = (SELECT ADMINID FROM admin WHERE ADMINPIN = #{adminpin}),
+        ANSWERCONTENT = #{answercontent},
+        ANSWERDATE = SYSDATE
+        WHERE contactpin = #{contactpin}
+    </update>
+
 
 </mapper>

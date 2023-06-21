@@ -18,9 +18,15 @@ public class Contact {
     private String contacttitle;
     private String contactcontent;
     private Date contactdate;
-    private String answer;
+    private String answercontact;
     private int adminpin;
     private String adminid;
     private String answercontent;
     private Date answerdate;
+
+    public Contact(Integer contactpin, Integer adminpin, String answercontent) {
+        this.adminpin = adminpin;
+        this.contactpin = contactpin;
+        this.answercontent = answercontent;
+    }
 }

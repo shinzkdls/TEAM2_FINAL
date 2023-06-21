@@ -29,4 +29,20 @@ public class ContactController {
         model.addAttribute("center",dir + "all");
         return "index";
     }
+    @RequestMapping("/detail")
+    public String detail(Model model, Integer contactpin) throws Exception {
+        Contact obj = contactService.get(contactpin);
+        model.addAttribute("obj", obj);
+        model.addAttribute("center",dir + "detail");
+        return "index";
+    }
+    @RequestMapping("/update")
+    public String update(Contact contact) throws Exception {
+        try{
+            contactService.registerResponse(contact);
+        }catch (Exception e){
+            e.getStackTrace();
+        }
+        return "redirect:/contact/detail?contactpin="+contact.getContactpin();
+    }
 }
