@@ -12,7 +12,7 @@
                         method: "post",
                         action: "/contact/update"
                     })
-                    $('#order_form').submit()
+                    $('#detail_form').submit()
                 }
 
             });
@@ -58,24 +58,16 @@
                             </tr>
                     </tbody>
                 </table>
-                <table style="text-align: center;" class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>Answer</th>
-                        <th>Answer</th>
-                        <th>Answer</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                            <tr>
-                                <form id="detail_form">
-                                    <input id="contactpin" name="contactpin" type="hidden" value="${obj.contactpin}">
-                                    <td><input id="adminpin" name="adminpin" type="readonly" value="${loginadm.adminPin}"></td>
-                                    <td><input id="answercontact" name="answercontact" style="text-align: center;"  value="${obj.answercontent}"></td>
-                                </form>
-                            </tr>
-                    </tbody>
-                </table>
+                <div id="container">
+                    <form id="detail_form" class="form-horizontal well">
+                        <input id="contactpin" name="contactpin" type="hidden" value="${obj.contactpin}">
+                        <input id="adminpin" name="adminpin" type="hidden" value="${loginadm.adminPin}" >
+                        <label class="control-label col-sm-2" for="answercontent">Answer</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="answercontent" name="answercontent" value="${obj.answercontent}">
+                        </div>
+                    </form>
+                </div>
                 <div style="display: flex; justify-content: flex-end;">
                     <a href="/contact/all" type="button" class="btn btn-primary" style="margin-right: 10px;">back to list</a>
                     <button type="button" id="update_btn" class="btn btn-primary">Update</button>

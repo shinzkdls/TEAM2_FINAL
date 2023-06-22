@@ -1,12 +1,14 @@
 package com.kbstar.service;
 
 import com.kbstar.dto.Contact;
+import com.kbstar.dto.UnTact;
 import com.kbstar.frame.KBService;
 import com.kbstar.mapper.ContactMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Service
@@ -43,5 +45,12 @@ public class ContactService implements KBService<Integer, Contact> {
     }
     public void registerResponse(Contact contact) throws Exception {
         mapper.registerResponse(contact);
+    }
+    public List contactCheck() throws Exception {
+        List<UnTact> list= mapper.contactCheck();
+        return list;
+    }
+    public Integer contactCnt() throws Exception {
+        return mapper.contactCnt();
     }
 }

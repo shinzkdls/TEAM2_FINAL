@@ -10,11 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-@Slf4j /*로그 찍는 골뱅이 이거 넣으면 log.info 사용가능 */
+@Slf4j
 @Controller
 @RequestMapping("/contact")
 public class ContactController {
@@ -44,5 +48,6 @@ public class ContactController {
             e.getStackTrace();
         }
         return "redirect:/contact/detail?contactpin="+contact.getContactpin();
+        //return "redirect:/contact/all";
     }
 }
