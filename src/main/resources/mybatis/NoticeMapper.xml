@@ -8,7 +8,7 @@
     <insert id="insert" parameterType="Notice">
         INSERT INTO notice
         VALUES (notice_seq.NEXTVAL,
-                70001,
+                #{adminpin},
                 #{noticetitle},
                 #{noticecontent},
                 SYSDATE)

@@ -12,7 +12,7 @@ import java.util.Date;
 @ToString
 public class Notice {
     private int noticepin;
-    private int adminpin;
+    private Integer adminpin;
     private String noticetitle;
     private String noticecontent;
     private Date noticedate;
