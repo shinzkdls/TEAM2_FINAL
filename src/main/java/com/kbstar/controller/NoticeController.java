@@ -5,6 +5,7 @@ import com.kbstar.dto.Cust;
 import com.kbstar.dto.Notice;
 import com.kbstar.service.CustService;
 import com.kbstar.service.NoticeService;
+import com.kbstar.util.PushNotificationUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,6 +22,8 @@ import java.util.List;
 public class NoticeController {
     @Autowired
     NoticeService noticeService;
+    @Autowired
+    PushNotificationUtil pushNotificationUtil;
     String dir = "notice/";
 
     @RequestMapping("/add")
@@ -30,13 +33,16 @@ public class NoticeController {
     }
 
     @RequestMapping("/addImpl")
-    public String addImpl(Integer adminpin, String noticetitle, String noticecontent) throws Exception {
-        System.out.println(adminpin+noticecontent+noticetitle+"<<<<<");
-        Notice notice =new Notice(adminpin, noticetitle, noticecontent);
-        try{
+    public String addImpl(Integer adminpin, String noticetitle, String noticecontent, String checkboxName) throws Exception {
+        String userToken = "eJqBEpgeRYey1KxcQ5d88W:APA91bFb566XCq2SThdatny14tx4iyJfbsjxE5dBjR1cQJ8we0H2lvzYWWFAW2d2WL98A_ycCiFIjVV94Dkdr1_GrqvLxvV1Hpi0jgSHoPcjrToJPhd1zX-l48QJIMBVu1sEOWN3d_Yg";
+        String imgUrl = "https://www.w3schools.com/css/img_5terre.jpg";
+        Notice notice = new Notice(adminpin, noticetitle, noticecontent);
+
+        if(checkboxName == null){
             noticeService.register(notice);
-        }catch (Exception e){
-            e.printStackTrace();
+        }else {
+            noticeService.register(notice);
+            pushNotificationUtil.sendTargetMessage("SPRING title4", "hello", "/register", userToken);
         }
         return "redirect:/";
     }
