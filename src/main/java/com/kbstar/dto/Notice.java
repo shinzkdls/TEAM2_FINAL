@@ -11,9 +11,15 @@ import java.util.Date;
 @Getter
 @ToString
 public class Notice {
-    private int noticepin;
-    private int adminpin;
+    private Integer noticepin;
+    private Integer adminpin;
     private String noticetitle;
     private String noticecontent;
     private Date noticedate;
+
+    public Notice(Integer adminpin, String noticetitle, String noticecontent) {
+        this.adminpin = adminpin;
+        this.noticetitle = noticetitle;
+        this.noticecontent = noticecontent;
+    }
 }

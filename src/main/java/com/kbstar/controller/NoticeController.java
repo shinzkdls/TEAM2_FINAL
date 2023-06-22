@@ -1,5 +1,6 @@
 package com.kbstar.controller;
 
+import com.kbstar.dto.Contact;
 import com.kbstar.dto.Cust;
 import com.kbstar.dto.Notice;
 import com.kbstar.service.CustService;
@@ -29,8 +30,14 @@ public class NoticeController {
     }
 
     @RequestMapping("/addImpl")
-    public String addImpl(Notice notice) throws Exception {
-        noticeService.register(notice);
+    public String addImpl(Integer adminpin, String noticetitle, String noticecontent) throws Exception {
+        System.out.println(adminpin+noticecontent+noticetitle+"<<<<<");
+        Notice notice =new Notice(adminpin, noticetitle, noticecontent);
+        try{
+            noticeService.register(notice);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return "redirect:/";
     }
 
@@ -42,36 +49,4 @@ public class NoticeController {
         return "index";
     }
 
-
-//    @RequestMapping("/detail")
-//    public String detail(Model model,String id) throws Exception {
-//        Cust cust = null;
-//        cust = custService.get(id);
-//        model.addAttribute("gcust",cust);
-//        model.addAttribute("center",dir+"detail");
-//        return "index";
-//    }
-//
-//    @RequestMapping("/deleteimpl")
-//    public String delete(Model model,String id) throws Exception {
-//        custService.remove(id);
-//        model.addAttribute("center",dir+"detail");
-//        return "redirect:/cust/all";
-//    }
-//    @RequestMapping("/updateimpl")
-//        public String updateimpl(Model model, @Validated Cust cust, Errors errors) throws Exception {
-//            if(errors.hasErrors()){
-//                List<ObjectError> es = errors.getAllErrors();
-//                String msg = "";
-//                for(ObjectError e:es){
-//                    msg += "<h4>";
-//                    msg += e.getDefaultMessage();
-//                    msg += "<h4>";
-//                }
-//                throw new Exception(msg);
-//            }
-//            cust.setPwd(encoder.encode(cust.getPwd()));
-//            custService.modify(cust);
-//            return "redirect:/cust/detail?id="+cust.getId();
-//        }
 }

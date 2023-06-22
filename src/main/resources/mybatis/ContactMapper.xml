@@ -14,6 +14,17 @@
         SELECT * FROM contact
         ORDER BY CONTACTDATE ASC
     </select>
+    <select id="contactCheck" resultType="UnTact">
+        SELECT contactpin, TO_CHAR(CONTACTDATE, 'YYYY-MM-DD') as CONTACTDATE, contacttitle, CONTACTcontent, CUSTPIN, trunc(sysdate) - trunc(CONTACTDATE) AS days_elapsed
+        FROM contact
+        WHERE answer = 'N'
+        ORDER BY CONTACTDATE
+    </select>
+    <select id="contactCnt" resultType="Integer">
+        SELECT count(*) AS count
+        FROM contact
+        WHERE answer = 'N'
+    </select>
 
     <update id="registerResponse" parameterType="Contact">
         UPDATE contact

@@ -12,7 +12,6 @@
             $('#register_form').attr({
                 method:'post',
                 action:'/notice/addImpl',
-                // enctype:'multipart/form-data'
             });
             $('#register_form').submit();
         }
@@ -35,7 +34,7 @@
         <div class="card-body">
             <div id="container">
                 <form id="register_form" class="form-horizontal well">
-                    <input type="hidden" id="adminpin" name="adminpin" value="${logincust.adminpin}}" >
+                    <input type="hidden" id="adminpin" name="adminpin" value="${loginadm.adminPin}" >
                     <label class="control-label col-sm-2" for="noticetitle">Title:</label>
                     <div class="form-group">
                         <input type="text" class="form-control" id="noticetitle" name="noticetitle" placeholder="Input Title">

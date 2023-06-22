@@ -150,6 +150,16 @@
 		</dependency>
 		<!-- json end -->
 
+
+
+		<!-- Gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+		<!-- Gson end -->
+
 	</dependencies>
 
 	<build>
