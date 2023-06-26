@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kbstar.mapper.Chart1Mapper">
+
+    <select id="getGoodTotal" resultType="chart1">
+        SELECT c.gender, rb.type, COUNT(g.custpin) AS total
+        FROM cust c
+                 JOIN goodlist g ON c.custpin = g.custpin
+                 JOIN recipe_basic rb ON g.recipepin = rb.recipepin
+        WHERE c.gender IS NOT NULL
+        GROUP BY c.gender, rb.type
+        ORDER BY rb.type DESC
+    </select>
+
+</mapper>

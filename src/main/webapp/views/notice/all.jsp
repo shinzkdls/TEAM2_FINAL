@@ -24,19 +24,26 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>PIN No.</th>
-                            <th>TITLE</th>
-                            <th>CONTENT</th>
-                            <th>DATE</th>
+                            <th style="text-align: center; width: 150px;">공지사항 번호</th>
+                            <th style="text-align: center;">제목</th>
+                            <th style="text-align: center;">내용</th>
+                            <th style="text-align: center; width: 150px;">등록일자</th>
+                            <th style="text-align: center; width: 100px;">삭제</th>
                         </tr>
                     </thead>
                     <tbody>
                     <c:forEach var="obj" items="${noticeList}">
                         <tr>
-                            <td>${obj.noticepin}</td>
-                            <td>${obj.noticetitle}</td>
-                            <td>${obj.noticecontent}</td>
-                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.noticedate}"/></td>
+                            <td style="text-align: center;">${obj.noticepin}</td>
+                            <td style="text-align: center;">${obj.noticetitle}</td>
+                            <td style="text-align: center;">${obj.noticecontent}</td>
+                            <td style="text-align: center;"><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.noticedate}"/></td>
+                            <td style="display: flex; justify-content: center; align-items: center;">
+                                <form action="/notice/deleteImpl" method="post" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
+                                    <input type="hidden" name="noticepin" value="${obj.noticepin}" />
+                                    <button type="submit" class="btn btn-primary">삭제</button>
+                                </form>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>

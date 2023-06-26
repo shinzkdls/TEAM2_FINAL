@@ -24,30 +24,29 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>IMAGE</th>
-                            <th>PIN No.</th>
-                            <th>TITLE</th>
-                            <th>WRITER</th>
-                            <th>TYPE</th>
-                            <th>LOCATION</th>
-                            <th>AMOUNT</th>
-                            <th>CLASS DATE</th>
+                            <th style="text-align: center;">이미지</th>
+                            <th style="text-align: center;">클래스 번호</th>
+                            <th style="text-align: center;">제목</th>
+                            <th style="text-align: center;">작성자</th>
+                            <th style="text-align: center;">종류</th>
+                            <th style="text-align: center;">위치</th>
+                            <th style="text-align: center;">가격</th>
+                            <th style="text-align: center;">클래스 날짜</th>
                         </tr>
                     </thead>
                     <tbody>
                     <c:forEach var="obj" items="${classList}">
                         <tr>
-                            <td>
+                            <td style="text-align: center;">
                                 <img id="class_img" src="/uimg/${obj.thumbnailimg}">
                             </td>
-                            <td>${obj.classpin}</td>
-                            <td>${obj.classtitle}</td>
-                            <td>${obj.custid}</td>
-                            <td>${obj.type}</td>
-                            <td>${obj.location}</td>
-                            <td>${obj.amount}</td>
-<%--                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.classdate}"/></td>--%>
-                            <td>${obj.classdate}</td>
+                            <td style="text-align: center;">${obj.classpin}</td>
+                            <td style="text-align: center;">${obj.classtitle}</td>
+                            <td style="text-align: center;">${obj.custid}</td>
+                            <td style="text-align: center;">${obj.type}</td>
+                            <td style="text-align: center;">${obj.location}</td>
+                            <td style="text-align: center;">${obj.amount}</td>
+                            <td style="text-align: center;">${obj.classdate}</td>
                         </tr>
                         <!-- Modal -->
 <%--                        <div id="target${obj.custid}" class="modal fade" role="dialog">--%>

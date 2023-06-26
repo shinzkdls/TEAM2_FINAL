@@ -17,21 +17,21 @@
                 <table class="table table-bordered" id="dataTable">
                     <thead>
                         <tr>
-                            <th>PIN No.</th>
-                            <th>ID</th>
-                            <th>NAME</th>
-                            <th>GENDER</th>
-                            <th>PHONE No.</th>
+                            <th style="text-align: center; width: 150px;">고객번호</th>
+                            <th style="text-align: center; width: 150px;">ID</th>
+                            <th style="text-align: center; width: 150px;">이름</th>
+                            <th style="text-align: center; width: 150px;">성별</th>
+                            <th style="text-align: center; width: 150px;">연락처</th>
                         </tr>
                     </thead>
                     <tbody>
                     <c:forEach var="obj" items="${custList}">
                         <tr>
-                            <td>${obj.custpin}</td>
-                            <td>${obj.custid}</td>
-                            <td>${obj.custname}</td>
-                            <td>${obj.gender}</td>
-                            <td>${obj.phone}</td>
+                            <td style="text-align: center;">${obj.custpin}</td>
+                            <td style="text-align: center;">${obj.custid}</td>
+                            <td style="text-align: center;">${obj.custname}</td>
+                            <td style="text-align: center;">${obj.gender}</td>
+                            <td style="text-align: center;">${obj.phone}</td>
                         </tr>
                     </c:forEach>
                     </tbody>

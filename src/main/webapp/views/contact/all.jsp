@@ -18,16 +18,17 @@
                 <table  style="text-align: center;" class="table table-bordered" id="dataTable" >
                     <thead>
                     <tr>
-                        <th>CONTACT PIN No.</th>
-                        <th>CUST PIN No.</th>
-                        <th>EMAIL</th>
-                        <th>TITLE</th>
-                        <th>CONTENT</th>
-                        <th>DATE</th>
-                        <th>Admin PIN No.</th>
-                        <th>Admin ID</th>
-                        <th>Answer</th>
-                        <th>Answer DATE</th>
+                        <th style="text-align: center;">문의번호</th>
+<%--                        <th style="text-align: center;">고객번호</th>--%>
+                        <th style="text-align: center; width: 120px;">EMAIL</th>
+                        <th style="text-align: center;">제목</th>
+                        <th style="text-align: center;">내용</th>
+                        <th style="text-align: center;">등록일자</th>
+<%--                        <th style="text-align: center;">관리자 번호</th>--%>
+                        <th style="text-align: center;">관리자 ID</th>
+                        <th style="text-align: center;">답변내용</th>
+                        <th style="text-align: center;">답변일자</th>
+                        <th style="text-align: center;">수정</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -35,12 +36,12 @@
                         <tr>
 
                                 <td>${obj.contactpin}</td>
-                                <td>${obj.custpin}</td>
+<%--                                <td>${obj.custpin}</td>--%>
                                 <td>${obj.email}</td>
                                 <td>${obj.contacttitle}</td>
                                 <td>${obj.contactcontent}</td>
                                 <td><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.contactdate}"/></td>
-                                <td>${obj.adminpin}</td>
+<%--                                <td>${obj.adminpin}</td>--%>
                                 <td>${obj.adminid}</td>
                                 <td>${obj.answercontent}</td>
                                 <td><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.answerdate}"/></td>

@@ -5,6 +5,7 @@
     let notice_add = {
     init:function (){
         $('#register_btn').click(function (){
+            setCheckboxValue();
             notice_add.send(); //아이템_애드 라는 객체에 센드가 호출
             });
         },
@@ -16,6 +17,14 @@
             $('#register_form').submit();
         }
     };
+
+    function setCheckboxValue() {
+        var checkbox = document.querySelector('input[name="checkboxName"]');
+        if (!checkbox.checked) {
+            checkbox.value = "0";
+        }
+    }
+
     $(function (){
         notice_add.init();
     })
@@ -44,11 +53,12 @@
                     <div class="form-group">
                         <input type="text" class="form-control" id="noticecontent" name="noticecontent" placeholder="Input Content">
                     </div>
-
+                    <div class="form-group">
+                        <input type="checkbox" name="checkboxName" id="checkboxName" value="1"> 광고성 여부(Push 알림 발송)
+                    </div>
                     <div>
                         <button type="button" id="register_btn" class="btn btn-primary">Regsiter</button>
                     </div>
-
                 </form>
             </div>
         </div>

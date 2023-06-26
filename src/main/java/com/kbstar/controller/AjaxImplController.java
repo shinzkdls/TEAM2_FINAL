@@ -1,13 +1,7 @@
 package com.kbstar.controller;
 
-import com.kbstar.dto.Admin;
-import com.kbstar.dto.Contact;
-import com.kbstar.dto.Sales;
-import com.kbstar.dto.UnTact;
-import com.kbstar.service.AdmService;
-import com.kbstar.service.ContactService;
-import com.kbstar.service.MarkerService;
-import com.kbstar.service.SalesService;
+import com.kbstar.dto.*;
+import com.kbstar.service.*;
 import com.kbstar.util.FileUploadUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
@@ -33,6 +27,12 @@ public class AjaxImplController {
     AdmService admService;
     @Autowired
     SalesService salesService;
+    @Autowired
+    Chart1Service chart1Service;
+    @Autowired
+    Chart2Service chart2Service;
+    @Autowired
+    UpperChartService upperChartService;
     @Value("${uploadimgdir}")
     String imgdir;
 
@@ -92,4 +92,118 @@ public class AjaxImplController {
         }
         return list;
     }
+
+
+    @RequestMapping("/chart1")
+    public Object chart1() throws Exception {
+
+        //
+//        JSONArray male = new JSONArray();
+//        JSONArray female = new JSONArray();
+//        log.info("list={}", list);
+//
+//        for(Chart1 c:list){
+//            if(c.getGender().toUpperCase().equals("M")){
+//                male.add(c.getTotal());
+//            }else {
+//                female.add(c.getTotal());
+//            }
+//        }
+
+        List<Chart1> list = chart1Service.getGoodTotal();
+        JSONArray jsonArray = new JSONArray();
+
+
+        // Male 데이터를 JSONArray에 추가
+        JSONArray maleArray = new JSONArray();
+        for (Chart1 c : list) {
+            if ("M".equalsIgnoreCase(c.getGender())) {
+                maleArray.add(c.getTotal());
+            }
+        }
+        jsonArray.add(maleArray);
+
+        // Female 데이터를 JSONArray에 추가
+        JSONArray femaleArray = new JSONArray();
+        for (Chart1 c : list) {
+            if ("F".equalsIgnoreCase(c.getGender())) {
+                femaleArray.add(c.getTotal());
+            }
+        }
+        jsonArray.add(femaleArray);
+
+
+        JSONObject m = new JSONObject();
+        JSONObject f = new JSONObject();
+        m.put("name", "남성");
+        m.put("data", maleArray);
+
+        f.put("name", "여성");
+        f.put("data", femaleArray);
+
+        JSONArray data = new JSONArray();
+
+        data.add(m);
+        data.add(f);
+        log.info("data={}", data);
+        return data;
+    }
+
+    @RequestMapping("/chart2")
+    public Object chart2() throws Exception {
+        List<Chart2> list = chart2Service.getTypeTotal();
+
+        JSONObject korean = new JSONObject();
+        JSONObject western = new JSONObject();
+        JSONObject chinese = new JSONObject();
+        JSONObject japanese = new JSONObject();
+        JSONObject asean = new JSONObject();
+        JSONObject dessert = new JSONObject();
+
+//        log.info("list={}", list);
+        for (Chart2 c : list) {
+            if(c.getType().equals("한식")){
+                korean.put("name", "한식");
+                korean.put("y", c.getTotal());
+                korean.put("z", c.getTotal());
+            }else if(c.getType().equals("양식")){
+                western.put("name", "양식");
+                western.put("y", c.getTotal());
+                western.put("z", c.getTotal());
+
+            }else if(c.getType().equals("중식")){
+                chinese.put("name", "중식");
+                chinese.put("y", c.getTotal());
+                chinese.put("z", c.getTotal());
+
+            }else if(c.getType().equals("일식")){
+                japanese.put("name", "일식");
+                japanese.put("y", c.getTotal());
+                japanese.put("z", c.getTotal());
+
+            }else if(c.getType().equals("동남아식")){
+                asean.put("name", "동남아식");
+                asean.put("y", c.getTotal());
+                asean.put("z", c.getTotal());
+
+            }else{
+                dessert.put("name", "디저트");
+                dessert.put("y", c.getTotal());
+                dessert.put("z", c.getTotal());
+            }
+        }
+
+            JSONArray data = new JSONArray();
+
+            data.add(korean);
+            data.add(western);
+            data.add(chinese);
+            data.add(japanese);
+            data.add(asean);
+            data.add(dessert);
+
+//            log.info("data={}", data);
+
+            return data;
+        }
 }
