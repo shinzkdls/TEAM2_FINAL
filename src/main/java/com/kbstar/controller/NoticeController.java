@@ -42,9 +42,15 @@ public class NoticeController {
             noticeService.register(notice);
         }else {
             noticeService.register(notice);
-            pushNotificationUtil.sendTargetMessage("SPRING title4", "hello", "/register", userToken);
+            pushNotificationUtil.sendTargetMessage(notice.getNoticetitle(), notice.getNoticecontent(), "/register", userToken);
         }
         return "redirect:/";
+    }
+
+    @RequestMapping("/deleteImpl")
+    public String deleteImpl(Integer noticepin) throws Exception {
+        noticeService.remove(noticepin);
+        return "redirect:/notice/all";
     }
 
     @RequestMapping("/all")

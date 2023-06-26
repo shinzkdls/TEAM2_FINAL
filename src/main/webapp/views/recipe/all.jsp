@@ -24,25 +24,25 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>IMAGE</th>
-                            <th>PIN No.</th>
-                            <th>TITLE</th>
-                            <th>WRITER</th>
-                            <th>TYPE</th>
-                            <th>DATE</th>
+                            <th style="text-align: center; width: 150px;">이미지</th>
+                            <th style="text-align: center; width: 100px;">레시피 번호</th>
+                            <th style="text-align: center;">제목</th>
+                            <th style="text-align: center; width: 100px;">작성자</th>
+                            <th style="text-align: center; width: 100px;">종류</th>
+                            <th style="text-align: center; width: 150px;">등록일자</th>
                         </tr>
                     </thead>
                     <tbody>
                     <c:forEach var="obj" items="${recipeList}">
                         <tr>
-                            <td>
+                            <td style="text-align: center;">
                                 <img id="recipe_img" src="/uimg/${obj.thumbnailimg}">
                             </td>
-                            <td>${obj.recipepin}</td>
-                            <td>${obj.recipetitle}</td>
-                            <td>${obj.custid}</td>
-                            <td>${obj.type}</td>
-                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.recipedate}"/></td>
+                            <td style="text-align: center;">${obj.recipepin}</td>
+                            <td style="text-align: center;">${obj.recipetitle}</td>
+                            <td style="text-align: center;">${obj.custid}</td>
+                            <td style="text-align: center;">${obj.type}</td>
+                            <td style="text-align: center;"><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.recipedate}"/></td>
                         </tr>
                         <!-- Modal -->
 <%--                        <div id="target${obj.custid}" class="modal fade" role="dialog">--%>

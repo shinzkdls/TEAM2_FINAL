@@ -14,6 +14,11 @@
                 SYSDATE)
     </insert>
 
+    <delete id="delete" parameterType="Integer">
+    DELETE FROM notice
+    WHERE noticepin = #{noticepin}
+    </delete>
+
     <select id="select" parameterType="Integer" resultType="Notice">
         SELECT * FROM notice
         WHERE noticepin = #{noticepin}
