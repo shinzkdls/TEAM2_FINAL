@@ -23,13 +23,14 @@ package com.kbstar.util;
 
 public class ChatbotUtil {
 
-    public String callChatbotAPI(String voiceMessage, String apiURL, String secretKey) {
+    public String callChatbotAPI(String voiceMessage) {
 
 
         String chatbotMessage = "";
+        String secretKey="eHVueW9pVEFWSktSSXpoR2FndVdLUW9BbEFkdUthamk=";
 
         try {
-            //String apiURL = "https://ex9av8bv0e.apigw.ntruss.com/custom_chatbot/prod/";
+            String apiURL = "https://90sh1ps231.apigw.ntruss.com/custom/v1/10497/e9e9cb695029600fed60d7a65f4b9ad92e377f5e337ed35889fe899c8fdf96b5";
 
             URL url = new URL(apiURL);
 
@@ -79,6 +80,7 @@ public class ChatbotUtil {
     public static String makeSignature(String message, String secretKey) {
 
         String encodeBase64String = "";
+        secretKey="eHVueW9pVEFWSktSSXpoR2FndVdLUW9BbEFkdUthamk=";
 
         try {
             byte[] secrete_key_bytes = secretKey.getBytes("UTF-8");
