@@ -28,7 +28,7 @@
                         <th style="text-align: center;">관리자 ID</th>
                         <th style="text-align: center;">답변내용</th>
                         <th style="text-align: center;">답변일자</th>
-                        <th style="text-align: center;">수정</th>
+                        <th style="text-align: center;">답변등록/수정</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -45,7 +45,15 @@
                                 <td>${obj.adminid}</td>
                                 <td>${obj.answercontent}</td>
                                 <td><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.answerdate}"/></td>
-                                <td><a type="button" class="btn btn-primary" href="/contact/detail?contactpin=${obj.contactpin}">답변수정</a></td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${obj.answercontent == null}">
+                                            <a type="button" class="btn btn-primary" href="/contact/detail?contactpin=${obj.contactpin}">답변등록</a></td>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <a type="button" class="btn btn-primary" href="/contact/detail?contactpin=${obj.contactpin}">답변수정</a></td>
+                                        </c:otherwise>
+                                    </c:choose>
                         </tr>
                     </c:forEach>
                     </tbody>

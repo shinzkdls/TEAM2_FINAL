@@ -30,6 +30,7 @@
                             <th style="text-align: center; width: 100px;">작성자</th>
                             <th style="text-align: center; width: 100px;">종류</th>
                             <th style="text-align: center; width: 150px;">등록일자</th>
+                            <th style="text-align: center; width: 100px;">삭제</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,6 +44,12 @@
                             <td style="text-align: center;">${obj.custid}</td>
                             <td style="text-align: center;">${obj.type}</td>
                             <td style="text-align: center;"><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.recipedate}"/></td>
+                            <td style="text-align: center;">
+                                <form action="/recipe/deleteImpl" method="post" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
+                                    <input type="hidden" name="recipepin" value="${obj.recipepin}" />
+                                    <button type="submit" class="btn btn-primary">삭제</button>
+                                </form>
+                            </td>
                         </tr>
                         <!-- Modal -->
 <%--                        <div id="target${obj.custid}" class="modal fade" role="dialog">--%>

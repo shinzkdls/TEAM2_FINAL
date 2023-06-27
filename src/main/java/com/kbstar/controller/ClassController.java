@@ -27,4 +27,10 @@ public class ClassController {
         model.addAttribute("center",dir + "all");
         return "index";
     }
+
+    @RequestMapping("/deleteImpl")
+    public String deleteImpl(Integer classpin) throws Exception {
+        classService.remove(classpin);
+        return "redirect:/class/all";
+    }
 }

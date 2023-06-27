@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!-- 차트 -->
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
@@ -116,12 +117,90 @@
     }
   };
 
+  let center_chart3 ={
+    init:function(){
+      $.ajax({
+        url:'/chart3',
+        success:function(data){
+          center_chart3.display(data);
+        }
+      })
+    },
+    display:function(data){
+      Highcharts.chart('container3', {
+        chart: {
+          type: 'bar'
+        },
+        title: {
+          text: 'Total Payemnt by Class Type',
+          align: 'left'
+        },
+        subtitle: {
+          text: '',
+          align: 'left'
+        },
+        xAxis: {
+          categories: ['한식', '중식', '일식', '양식', '디저트', '동남아식'],
+          title: {
+            text: null
+          },
+          gridLineWidth: 1,
+          lineWidth: 0
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: 'Payment(KRW)',
+            align: 'high'
+          },
+          labels: {
+            overflow: 'justify'
+          },
+          gridLineWidth: 0
+        },
+        tooltip: {
+          valueSuffix: ''
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: '50%',
+            dataLabels: {
+              enabled: true
+            },
+            groupPadding: 0.1
+          }
+        },
+        legend: {
+          layout: 'vertical',
+          align: 'right',
+          verticalAlign: 'top',
+          x: -40,
+          y: 80,
+          floating: true,
+          borderWidth: 1,
+          backgroundColor:
+                  Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+          shadow: true
+        },
+        credits: {
+          enabled: false
+        },
+        series: [{
+          name: 'Korean Won',
+          data: data
+        }]
+      });
+    }
+  };
+
   $(function(){
     center_chart1.init();
     center_chart2.init();
+    center_chart3.init();
 
     setInterval(center_chart1.init,5000);
     setInterval(center_chart2.init,5000);
+    setInterval(center_chart3.init,5000);
   });
 </script>
       <%----------------------------------------------------------------------------------------------------------------%>
@@ -280,36 +359,9 @@
                 <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
               </div>
               <div class="card-body">
-                <h4 class="small font-weight-bold">Server Migration <span
-                        class="float-right">20%</span></h4>
-                <div class="progress mb-4">
-                  <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
-                       aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Sales Tracking <span
-                        class="float-right">40%</span></h4>
-                <div class="progress mb-4">
-                  <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
-                       aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Customer Database <span
-                        class="float-right">60%</span></h4>
-                <div class="progress mb-4">
-                  <div class="progress-bar" role="progressbar" style="width: 60%"
-                       aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Payout Details <span
-                        class="float-right">80%</span></h4>
-                <div class="progress mb-4">
-                  <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                       aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Account Setup <span
-                        class="float-right">Complete!</span></h4>
-                <div class="progress">
-                  <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
-                       aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                <figure class="highcharts-figure">
+                  <div id="container3"></div>
+                </figure>
               </div>
             </div>
 

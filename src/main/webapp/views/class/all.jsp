@@ -32,6 +32,7 @@
                             <th style="text-align: center;">위치</th>
                             <th style="text-align: center;">가격</th>
                             <th style="text-align: center;">클래스 날짜</th>
+                            <th style="text-align: center;">삭제</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,6 +48,12 @@
                             <td style="text-align: center;">${obj.location}</td>
                             <td style="text-align: center;">${obj.amount}</td>
                             <td style="text-align: center;">${obj.classdate}</td>
+                            <td style="text-align: center;">
+                                <form action="/class/deleteImpl" method="post" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
+                                    <input type="hidden" name="classpin" value="${obj.classpin}" />
+                                    <button type="submit" class="btn btn-primary">삭제</button>
+                                </form>
+                            </td>
                         </tr>
                         <!-- Modal -->
 <%--                        <div id="target${obj.custid}" class="modal fade" role="dialog">--%>

@@ -26,7 +26,7 @@ public class RecipeService implements KBService<Integer, RecipeBasic> {
 
     @Override
     public void remove(Integer integer) throws Exception {
-
+        mapper.delete(integer);
     }
 
     @Override

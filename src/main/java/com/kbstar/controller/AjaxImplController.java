@@ -32,7 +32,7 @@ public class AjaxImplController {
     @Autowired
     Chart2Service chart2Service;
     @Autowired
-    UpperChartService upperChartService;
+    Chart3Service chart3Service;
     @Value("${uploadimgdir}")
     String imgdir;
 
@@ -100,7 +100,6 @@ public class AjaxImplController {
         List<Chart1> list = chart1Service.getGoodTotal();
         JSONArray jsonArray = new JSONArray();
 
-
         // Male 데이터를 JSONArray에 추가
         JSONArray maleArray = new JSONArray();
         for (Chart1 c : list) {
@@ -132,7 +131,7 @@ public class AjaxImplController {
 
         data.add(m);
         data.add(f);
-        log.info("data={}", data);
+//        log.info("data={}", data);
         return data;
     }
 
@@ -193,4 +192,49 @@ public class AjaxImplController {
 
             return data;
         }
+
+    @RequestMapping("/chart3")
+    public Object chart3() throws Exception {
+
+        List<Chart3> list = chart3Service.getTypeTotalPayment();
+        JSONObject korean = new JSONObject();
+        JSONObject western = new JSONObject();
+        JSONObject chinese = new JSONObject();
+        JSONObject japanese = new JSONObject();
+        JSONObject asean = new JSONObject();
+        JSONObject dessert = new JSONObject();
+
+        for (Chart3 c : list) {
+            if(c.getType().equals("한식")){
+                korean.put("data", c.getType());
+                korean.put("data", c.getTotal());
+            }else if(c.getType().equals("양식")){
+                western.put("data", c.getType());;
+                western.put("data", c.getTotal());
+            }else if(c.getType().equals("중식")){
+                chinese.put("data", c.getType());;
+                chinese.put("data", c.getTotal());
+            }else if(c.getType().equals("일식")){
+                japanese.put("data", c.getType());;
+                japanese.put("data", c.getTotal());
+            }else if(c.getType().equals("동남아식")){
+                asean.put("data", c.getType());;
+                asean.put("data", c.getTotal());
+            }else{
+                dessert.put("data", c.getType());;
+                dessert.put("data", c.getTotal());
+            }
+        }
+
+        JSONArray data = new JSONArray();
+        data.add(korean);
+        data.add(western);
+        data.add(chinese);
+        data.add(japanese);
+        data.add(asean);
+        data.add(dessert);
+
+        log.info("data={}", data);
+        return data;
+    }
 }

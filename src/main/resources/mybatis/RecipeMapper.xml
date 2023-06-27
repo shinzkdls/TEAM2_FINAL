@@ -5,6 +5,11 @@
 
 <mapper namespace="com.kbstar.mapper.RecipeMapper">
 
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM recipe_basic
+        WHERE recipepin = #{recipepin}
+    </delete>
+
     <select id="select" parameterType="Integer" resultType="RecipeBasic">
         SELECT * FROM recipe_basic
         WHERE recipepin=#{recipepin}

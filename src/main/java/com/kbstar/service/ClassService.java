@@ -27,7 +27,7 @@ public class ClassService implements KBService<Integer, ClassBasic> {
 
     @Override
     public void remove(Integer integer) throws Exception {
-
+        mapper.delete(integer);
     }
 
     @Override

@@ -28,55 +28,9 @@ public class RecipeController {
         return "index";
     }
 
-//    @RequestMapping("/add")
-//    public String add(Model model){
-//        model.addAttribute("center",dir+"add");
-//        return "index";
-//    }
-//    @RequestMapping("/addimpl")
-//    public String addimpl(Model model, Item item) throws Exception {
-//        MultipartFile mf = item.getImg();
-//        String imgname = mf.getOriginalFilename();
-////        log.info("---------------------------------------------------------------------");
-////        log.info(imgname);
-////        log.info("---------------------------------------------------------------------"); 확인용 로그.인포
-//        item.setImgname(imgname);
-//        itemService.register(item);
-//        FileUploadUtil.saveFile(mf,imgdir);
-//        return "redirect:/item/all";
-//    }
-//    @RequestMapping("/detail")
-//    public String detail(Model model, int id) throws Exception {
-//        Item item = null;
-//        item = itemService.get(id);
-//        model.addAttribute("gitem",item);
-//        model.addAttribute("center",dir+"detail");
-//        return "index";
-//    }
-//
-//    @RequestMapping("/updateimpl")
-//    public String updateimpl(Model model, Item item) throws Exception {
-//        MultipartFile mf = item.getImg();
-//        String new_imgname = mf.getOriginalFilename();
-//
-//      if(new_imgname.equals("") || new_imgname == null){
-//           itemService.modify(item);
-//        }else{
-//            item.setImgname(new_imgname);
-//            itemService.modify(item);
-//            FileUploadUtil.saveFile(mf,imgdir);
-//        }
-///*        if(!imgname.equals("") || imgname != null){
-//            item.setImgname(imgname);
-//            FileUploadUtil.saveFile(mf,imgdir);
-//        }
-//        itemService.modify(item);*/
-//        return "redirect:/item/detail?id="+item.getId();
-//    }
-//    @RequestMapping("/deleteimpl")
-//    public String delete(Model model,int id) throws Exception {
-//        itemService.remove(id);
-//        model.addAttribute("center",dir+"detail");
-//        return "redirect:/item/all";
-//    }
+    @RequestMapping("/deleteImpl")
+    public String deleteImpl(Integer recipepin) throws Exception {
+        recipeService.remove(recipepin);
+        return "redirect:/recipe/all";
+    }
 }

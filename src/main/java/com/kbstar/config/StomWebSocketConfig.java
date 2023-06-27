@@ -1,10 +1,16 @@
 package com.kbstar.config;
 
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
+
+import javax.annotation.PostConstruct;
 
 @EnableWebSocketMessageBroker
 @Configuration
@@ -30,5 +36,24 @@ public class StomWebSocketConfig implements WebSocketMessageBrokerConfigurer{
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         registry.enableSimpleBroker("/send","/broadcast");
+    }
+
+    @Configuration
+    static
+    class FcmConfig {
+        public String firebaseConfig = "fcm_admin.json";
+
+        @PostConstruct
+        public void init(){
+            try{
+                FirebaseOptions options = new FirebaseOptions.Builder()
+                        .setCredentials( GoogleCredentials
+                                .fromStream(new ClassPathResource(firebaseConfig).getInputStream()))
+                        .build();
+                FirebaseApp.initializeApp(options);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 }

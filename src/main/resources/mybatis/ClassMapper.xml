@@ -5,6 +5,11 @@
 
 <mapper namespace="com.kbstar.mapper.ClassMapper">
 
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM class_basic
+        WHERE classpin = #{classpin}
+    </delete>
+
     <select id="select" parameterType="Integer" resultType="ClassBasic">
         SELECT * FROM class_basic
         WHERE classpin=#{classpin}

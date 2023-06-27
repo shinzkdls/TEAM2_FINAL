@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kbstar.mapper.Chart3Mapper">
+
+    <select id="getTypeTotalPayment" resultType="chart3">
+        SELECT cb.type, SUM(p.amount) AS total
+        FROM payment p
+                 JOIN class_basic cb ON p.classpin = cb.classpin
+        GROUP BY cb.type
+    </select>
+
+</mapper>

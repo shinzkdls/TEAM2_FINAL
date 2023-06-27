@@ -42,7 +42,7 @@ public class NoticeController {
             noticeService.register(notice);
         }else {
             noticeService.register(notice);
-            pushNotificationUtil.sendTargetMessage(notice.getNoticetitle(), notice.getNoticecontent(), "/register", userToken);
+            pushNotificationUtil.sendTargetMessage(notice.getNoticetitle(), notice.getNoticecontent(), "/", userToken);
         }
         return "redirect:/";
     }
