@@ -1,6 +1,7 @@
 package com.kbstar.service;
 
 import com.kbstar.dto.ClassBasic;
+import com.kbstar.dto.RecipeBasic;
 import com.kbstar.frame.KBService;
 import com.kbstar.mapper.ClassMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -42,5 +43,9 @@ public class ClassService implements KBService<Integer, ClassBasic> {
     @Override
     public List<ClassBasic> get() throws Exception {
         return mapper.selectall();
+    }
+
+    public ClassBasic getNew() throws Exception{
+        return mapper.selectNew();
     }
 }
