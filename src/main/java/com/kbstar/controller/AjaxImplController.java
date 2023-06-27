@@ -97,19 +97,6 @@ public class AjaxImplController {
     @RequestMapping("/chart1")
     public Object chart1() throws Exception {
 
-        //
-//        JSONArray male = new JSONArray();
-//        JSONArray female = new JSONArray();
-//        log.info("list={}", list);
-//
-//        for(Chart1 c:list){
-//            if(c.getGender().toUpperCase().equals("M")){
-//                male.add(c.getTotal());
-//            }else {
-//                female.add(c.getTotal());
-//            }
-//        }
-
         List<Chart1> list = chart1Service.getGoodTotal();
         JSONArray jsonArray = new JSONArray();
 

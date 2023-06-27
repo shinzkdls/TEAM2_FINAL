@@ -43,4 +43,8 @@ public class RecipeService implements KBService<Integer, RecipeBasic> {
     public List<RecipeBasic> get() throws Exception {
         return mapper.selectall();
     }
+
+    public RecipeBasic getNew() throws Exception{
+        return mapper.selectNew();
+    }
 }

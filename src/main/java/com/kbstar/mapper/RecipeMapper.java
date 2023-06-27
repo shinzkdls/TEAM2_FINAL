@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface RecipeMapper extends KBMapper<Integer, RecipeBasic> {
-
+    public RecipeBasic selectNew();
 }
