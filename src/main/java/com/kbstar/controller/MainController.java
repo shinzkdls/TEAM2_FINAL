@@ -1,7 +1,9 @@
 package com.kbstar.controller;
 
 import com.kbstar.dto.Admin;
+import com.kbstar.dto.RecipeBasic;
 import com.kbstar.service.AdmService;
+import com.kbstar.service.RecipeService;
 import com.kbstar.util.SendMailUtil;
 import io.github.flashvayne.chatgpt.service.ChatgptService;
 import lombok.extern.slf4j.Slf4j;
@@ -33,18 +35,22 @@ public class MainController {
     AdmService admservice;
     @Autowired
     SendMailUtil sendMailUtil;
+    @Autowired
+    RecipeService recipeService;
 
     @Value("${adminserver}")
     String adminserver;
     @RequestMapping("/")
-    public String main(HttpSession session) throws Exception {
+    public String main(Model model, RecipeBasic recipeBasic, HttpSession session) throws Exception {
         Admin adm= null;
         try {
             adm = admservice.get("admin1");
+            recipeBasic = recipeService.getNew();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         session.setAttribute("loginadm", adm);
+        model.addAttribute("recipedetail", recipeBasic);
         return "index";
     }
 

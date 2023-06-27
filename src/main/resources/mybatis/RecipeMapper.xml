@@ -15,4 +15,14 @@
         ORDER BY recipepin ASC
     </select>
 
+    <select id="selectNew" resultType="RecipeBasic">
+        SELECT *
+        FROM (
+                 SELECT *
+                 FROM recipe_basic
+                 ORDER BY recipedate DESC
+             )
+        WHERE ROWNUM = 1
+    </select>
+
 </mapper>

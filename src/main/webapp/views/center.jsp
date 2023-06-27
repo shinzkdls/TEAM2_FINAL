@@ -145,11 +145,11 @@
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                      Earnings (Monthly)</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="uppercontainer1">$40,000</div>
+                      The Number of Users</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="uppercontainer1">33</div>
                   </div>
                   <div class="col-auto">
-                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    <i class="fa fa-user"></i>
                   </div>
                 </div>
               </div>
@@ -163,11 +163,11 @@
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                      Earnings (Annual)</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                      The Number of Recipes</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">12</div>
                   </div>
                   <div class="col-auto">
-                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    <i class="fa fa-utensils"></i>
                   </div>
                 </div>
               </div>
@@ -180,11 +180,11 @@
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">The Number of Cooking Classes
                     </div>
                     <div class="row no-gutters align-items-center">
                       <div class="col-auto">
-                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">10</div>
                       </div>
                       <div class="col">
                         <div class="progress progress-sm mr-2">
@@ -196,7 +196,7 @@
                     </div>
                   </div>
                   <div class="col-auto">
-                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    <i class="fa fa-cookie-bite"></i>
                   </div>
                 </div>
               </div>
@@ -210,11 +210,11 @@
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                      Pending Requests</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                      EARNINGS (MONTHLY)</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">￦180,000</div>
                   </div>
                   <div class="col-auto">
-                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    <i class="fa fa-won-sign"></i>
                   </div>
                 </div>
               </div>
@@ -388,19 +388,17 @@
             <!-- Illustrations -->
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                <h6 class="m-0 font-weight-bold text-primary">새로 등록된 레시피</h6>
               </div>
               <div class="card-body">
                 <div class="text-center">
+                  <a target="_blank" rel="nofollow" href="http://127.0.0.1:80/recipe/detail?recipepin=${recipedetail.recipepin}">
                   <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                       src="img/undraw_posting_photo.svg" alt="...">
+                       src="/uimg/${recipedetail.thumbnailimg}" alt="...">
+                  </a>
                 </div>
-                <p>Add some quality, svg illustrations to your project courtesy of <a
-                        target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                  constantly updated collection of beautiful svg images that you can use
-                  completely free and without attribution!</p>
-                <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-                  unDraw &rarr;</a>
+                <p>${recipedetail.recipedesc}</p>
+                <a target="_blank" rel="nofollow" href="http://127.0.0.1:80/recipe/detail?recipepin=${recipedetail.recipepin}">${recipedetail.recipetitle}</a>
               </div>
             </div>
 
