@@ -15,4 +15,14 @@
         ORDER BY classpin ASC
     </select>
 
+    <select id="selectNew" resultType="ClassBasic">
+        SELECT *
+        FROM (
+                 SELECT *
+                 FROM class_basic
+                 ORDER BY classdate DESC
+             )
+        WHERE ROWNUM = 1
+    </select>
+
 </mapper>
