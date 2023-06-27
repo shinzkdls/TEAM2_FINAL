@@ -226,20 +226,20 @@
 <%--        </li>--%>
 
 <%--        <!-- Nav Item - Live Chart -->--%>
-<%--        <li class="nav-item">--%>
+<%--        <li  class="nav-item">--%>
 <%--            <a class="nav-link" href="/livechart">--%>
 <%--                <i class="fas fa-fw fa-chart-area"></i>--%>
 <%--                <span>Live Chart</span></a>--%>
 <%--        </li>--%>
 
         <!-- Nav Item - websocket -->
-<%--        <c:if test="${loginadm != null}">--%>
-<%--            <li class="nav-item">--%>
-<%--                <a class="nav-link" href="/websocket">--%>
-<%--                    <i class="fas fa-fw fa-solid fa-comments"></i>--%>
-<%--                    <span>websocket</span></a>--%>
-<%--            </li>--%>
-<%--        </c:if>--%>
+         <c:if test="${loginadm != null}">
+             <li class="nav-item">
+                 <a class="nav-link" href="/websocket">
+                     <i class="fas fa-fw fa-solid fa-comments"></i>
+                     <span>websocket</span></a>
+             </li>
+         </c:if>
 
 
         <!-- Nav Item - Chat bot -->
