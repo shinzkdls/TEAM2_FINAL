@@ -237,6 +237,11 @@ public class AjaxImplController {
                 data.add(c.getTotal());
             }
         }
+        for (Chart3 c : list) {
+            if ("기타".equalsIgnoreCase(c.getType())) {
+                data.add(c.getTotal());
+            }
+        }
         log.info("data = {}", data);
         return data;
     }
