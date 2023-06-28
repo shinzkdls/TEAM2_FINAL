@@ -14,7 +14,11 @@
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="/js/charts.js"></script>
 <script>
-
+  function openLinkInNewWindow(url) {
+    window.open(url, '_blank');
+  }
+</script>
+<script>
   let center_chart1 ={
     //init에서는 서버에다가 데이터를 요청할것
     init:function(){
@@ -132,7 +136,7 @@
           type: 'bar'
         },
         title: {
-          text: 'Total Payment by Class Type',
+          text: '클래스 유형별 총 결제액',
           align: 'left'
         },
         subtitle: {
@@ -150,7 +154,7 @@
         yAxis: {
           min: 0,
           title: {
-            text: 'Payment(KRW)',
+            text: '결제금액(원)',
             align: 'high'
           },
           labels: {
@@ -186,7 +190,7 @@
           enabled: false
         },
         series: [{
-          name: 'Korean Won',
+          name: '원',
           data: data
         }]
       });
@@ -366,17 +370,17 @@
             <div class="row">
               <div class="col-lg-6 mb-4">
                 <div class="card bg-primary text-white shadow">
-                  <div class="card-body">
-                    Primary
-                    <div class="text-white-50 small">#4e73df</div>
+                  <div class="card-body" onclick="openLinkInNewWindow('http://127.0.0.1/recipe/all?type=&ingredients1=&recipelevel=&recipetitle=&sort=0')" style="cursor:pointer;">
+                    레시피 서비스 바로가기
+                    <div class="text-white-50 small" style="color: white">Recipe Service</div>
                   </div>
                 </div>
               </div>
               <div class="col-lg-6 mb-4">
                 <div class="card bg-success text-white shadow">
-                  <div class="card-body">
-                    Success
-                    <div class="text-white-50 small">#1cc88a</div>
+                  <div class="card-body" onclick="openLinkInNewWindow('http://127.0.0.1/cookingclass/class?location=&type=&classtitle=&sort=1')" style="cursor:pointer;">
+                    클래스 서비스 바로가기
+                    <div class="text-white-50 small">Class Service</div>
                   </div>
                 </div>
               </div>
