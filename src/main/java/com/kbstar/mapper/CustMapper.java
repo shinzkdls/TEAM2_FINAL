@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface CustMapper extends KBMapper<String, Cust> {
 
+    public Integer countall() throws Exception;
+
 }

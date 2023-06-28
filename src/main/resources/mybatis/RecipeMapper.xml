@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
- <!DOCTYPE mapper
-                PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
-                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kbstar.mapper.RecipeMapper">
 
     <delete id="delete" parameterType="Integer">
-        DELETE FROM recipe_basic
+        DELETE
+        FROM recipe_basic
         WHERE recipepin = #{recipepin}
     </delete>
 
     <select id="select" parameterType="Integer" resultType="RecipeBasic">
-        SELECT * FROM recipe_basic
-        WHERE recipepin=#{recipepin}
+        SELECT *
+        FROM recipe_basic
+        WHERE recipepin = #{recipepin}
     </select>
 
     <select id="selectall" resultType="RecipeBasic">
-        SELECT * FROM recipe_basic
+        SELECT *
+        FROM recipe_basic
         ORDER BY recipepin ASC
     </select>
 
     <select id="selectNew" resultType="RecipeBasic">
         SELECT *
-        FROM (
-                 SELECT *
-                 FROM recipe_basic
-                 ORDER BY recipedate DESC
-             )
+        FROM (SELECT *
+              FROM recipe_basic
+              ORDER BY recipedate DESC)
         WHERE ROWNUM = 1
+    </select>
+
+    <select id="countall" resultType="Integer">
+        SELECT COUNT(*) AS COUNT
+        FROM recipe_basic
     </select>
 
 </mapper>

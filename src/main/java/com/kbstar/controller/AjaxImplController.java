@@ -13,12 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Slf4j
 @RestController
 public class AjaxImplController {
+    @Autowired
+    CustService custService;
+    @Autowired
+    RecipeService recipeService;
+    @Autowired
+    ClassService classService;
     @Autowired
     ContactService contactService;
     @Autowired
@@ -41,14 +48,16 @@ public class AjaxImplController {
         int result = 0;
         Admin adm = null;
         adm = admService.get(id);
-        if(adm != null){
-            result =1;
+        if (adm != null) {
+            result = 1;
         }
         return result;
-    };
+    }
+
+    ;
 
     @RequestMapping("/saveimg")
-    public String saveimg(MultipartFile file){
+    public String saveimg(MultipartFile file) {
         String filename = file.getOriginalFilename();
         FileUploadUtil.saveFile(file, imgdir);
         return filename;
@@ -67,7 +76,7 @@ public class AjaxImplController {
 
 
     @RequestMapping("/contactCnt")
-    public Integer contactCnt(Model model)  {
+    public Integer contactCnt(Model model) {
         Map result = null;
         int cnt = 0;
         try {
@@ -84,10 +93,10 @@ public class AjaxImplController {
 
     @RequestMapping("/contactCheck")
     public List contactCheck(Contact contact) throws Exception {
-        List<UnTact> list= null;
-        try{
+        List<UnTact> list = null;
+        try {
             list = contactService.contactCheck();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.getStackTrace();
         }
         return list;
@@ -148,50 +157,50 @@ public class AjaxImplController {
 
 //        log.info("list={}", list);
         for (Chart2 c : list) {
-            if(c.getType().equals("한식")){
+            if (c.getType().equals("한식")) {
                 korean.put("name", "한식");
                 korean.put("y", c.getTotal());
                 korean.put("z", c.getTotal());
-            }else if(c.getType().equals("양식")){
+            } else if (c.getType().equals("양식")) {
                 western.put("name", "양식");
                 western.put("y", c.getTotal());
                 western.put("z", c.getTotal());
 
-            }else if(c.getType().equals("중식")){
+            } else if (c.getType().equals("중식")) {
                 chinese.put("name", "중식");
                 chinese.put("y", c.getTotal());
                 chinese.put("z", c.getTotal());
 
-            }else if(c.getType().equals("일식")){
+            } else if (c.getType().equals("일식")) {
                 japanese.put("name", "일식");
                 japanese.put("y", c.getTotal());
                 japanese.put("z", c.getTotal());
 
-            }else if(c.getType().equals("동남아식")){
+            } else if (c.getType().equals("동남아식")) {
                 asean.put("name", "동남아식");
                 asean.put("y", c.getTotal());
                 asean.put("z", c.getTotal());
 
-            }else{
+            } else {
                 dessert.put("name", "디저트");
                 dessert.put("y", c.getTotal());
                 dessert.put("z", c.getTotal());
             }
         }
 
-            JSONArray data = new JSONArray();
+        JSONArray data = new JSONArray();
 
-            data.add(korean);
-            data.add(western);
-            data.add(chinese);
-            data.add(japanese);
-            data.add(asean);
-            data.add(dessert);
+        data.add(korean);
+        data.add(western);
+        data.add(chinese);
+        data.add(japanese);
+        data.add(asean);
+        data.add(dessert);
 
 //            log.info("data={}", data);
 
-            return data;
-        }
+        return data;
+    }
 
     @RequestMapping("/chart3")
     public Object chart3() throws Exception {
@@ -230,5 +239,16 @@ public class AjaxImplController {
         }
         log.info("data = {}", data);
         return data;
+    }
+
+    @RequestMapping("/dashboard")
+    public Object dashboard() throws Exception {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("custcount", custService.countall());
+        map.put("recipecount", recipeService.countall());
+        map.put("classcount", classService.countall());
+        map.put("earnings", classService.earnings());
+        log.info("%%%%%%%%%" + map.toString());
+        return map;
     }
 }

@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
- <!DOCTYPE mapper
-                PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
-                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kbstar.mapper.ClassMapper">
 
     <delete id="delete" parameterType="Integer">
-        DELETE FROM class_basic
+        DELETE
+        FROM class_basic
         WHERE classpin = #{classpin}
     </delete>
 
     <select id="select" parameterType="Integer" resultType="ClassBasic">
-        SELECT * FROM class_basic
-        WHERE classpin=#{classpin}
+        SELECT *
+        FROM class_basic
+        WHERE classpin = #{classpin}
     </select>
 
     <select id="selectall" resultType="ClassBasic">
-        SELECT * FROM class_basic
+        SELECT *
+        FROM class_basic
         ORDER BY classpin ASC
     </select>
 
     <select id="selectNew" resultType="ClassBasic">
         SELECT *
-        FROM (
-                 SELECT *
-                 FROM class_basic
-                 ORDER BY classdate DESC
-             )
+        FROM (SELECT *
+              FROM class_basic
+              ORDER BY classdate DESC)
         WHERE ROWNUM = 1
+    </select>
+
+    <select id="countall" resultType="Integer">
+        SELECT COUNT(*) AS COUNT
+        FROM class_basic
+    </select>
+
+    <select id="earnings" resultType="Integer">
+        SELECT SUM(amount) as earnings
+        FROM payment
+        WHERE paydate BETWEEN TRUNC(sysdate, 'MM') AND LAST_DAY(sysdate)
     </select>
 
 </mapper>

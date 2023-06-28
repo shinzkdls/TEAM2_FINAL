@@ -31,4 +31,9 @@
         WHERE ROWNUM = 1
     </select>
 
+    <select id="countall" resultType="Integer">
+        SELECT COUNT(*) AS COUNT
+        FROM CUST
+    </select>
+
 </mapper>
