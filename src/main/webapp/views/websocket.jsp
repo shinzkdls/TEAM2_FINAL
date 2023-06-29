@@ -12,7 +12,7 @@
         border: 2px solid green;
         border-radius: 25px;
     }
-    #sended {
+    #sent {
         width: 400px;
         height: 200px;
         overflow: auto;
@@ -20,23 +20,6 @@
         border-radius: 25px;
     }
 
-
-    html,
-    body {
-        height: 100%;
-    }
-
-    body {
-        display: grid;
-        font-family: Avenir;
-        -webkit-text-size-adjust: 100%;
-        -webkit-font-smoothing: antialiased;
-        overflow: hidden;
-    }
-
-    * {
-        box-sizing: border-box;
-    }
 
     .inp {
         position: relative;
@@ -136,12 +119,12 @@
             this.id = $('#adm_id').text();
             websocket.connect();
             $("#sendall").click(function() {
-                $("#sended").prepend(
+                $("#sent").prepend(
                     "<h1>전체발송함</h1>");
                 websocket.sendAll();
             });
             $("#sendto").click(function() {
-                $("#sended").prepend(
+                $("#sent").prepend(
                     "<h1>개별발송함</h1>");
                 websocket.sendTo();
             });
@@ -203,8 +186,8 @@
                 <h3>recived</h3>
                 <div id="recived"></div>
 
-                <h3>sended</h3>
-                <div id="sended"></div>
+                <h3>sent</h3>
+                <div id="sent"></div>
                 <label class="control-label" for="alltext">공지 사항</label>
                 <div class="form-group" style="display: flex">
                     <input type="text" class="form-control" id="alltext"><button class="btn btn-outline-primary" id="sendall">발송</button>
