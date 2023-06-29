@@ -46,7 +46,7 @@
                             <td style="text-align: center;">${obj.custid}</td>
                             <td style="text-align: center;">${obj.type}</td>
                             <td style="text-align: center;">${obj.location}</td>
-                            <td style="text-align: center;">${obj.amount}</td>
+                            <td style="text-align: center;"><fmt:formatNumber value="${obj.amount}" pattern="#,##0" /></td>
                             <td style="text-align: center;">${obj.classdate}</td>
                             <td style="text-align: center;">
                                 <form action="/class/deleteImpl" method="post" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
@@ -55,26 +55,6 @@
                                 </form>
                             </td>
                         </tr>
-                        <!-- Modal -->
-<%--                        <div id="target${obj.custid}" class="modal fade" role="dialog">--%>
-<%--                            <div class="modal-dialog">--%>
-<%--                                <!-- Modal content-->--%>
-<%--                                <div class="modal-content">--%>
-<%--                                    <div class="modal-header">--%>
-<%--                                        <h4 class="modal-title">Detail Image</h4>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="modal-body">--%>
-<%--                                        <p>${obj.title}</p>--%>
-<%--                                        <img src="/uimg/${obj.thumbnailimg}"><br/>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="modal-footer">--%>
-<%--                                        <a href="/class/detail?id=${obj.custid}" class="btn btn-info" role="button">Detail</a>--%>
-<%--                                        <a href="#" class="btn btn-info" data-dismiss="modal" role="button">Close</a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-                        <!-- Modal END-->
                     </c:forEach>
                     </tbody>
                 </table>
