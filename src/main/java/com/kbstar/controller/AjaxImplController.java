@@ -249,7 +249,11 @@ public class AjaxImplController {
     @RequestMapping("/dashboard")
     public Object dashboard() throws Exception {
         Map<String, Integer> map = new HashMap<>();
-        map.put("custcount", custService.countall());
+        List<Integer> list = custService.countall();
+        map.put("custcount", list.get(0));
+        map.put("todaycust", list.get(1));
+        map.put("mau", list.get(2));
+        map.put("dau", list.get(3));
         map.put("recipecount", recipeService.countall());
         map.put("classcount", classService.countall());
         map.put("earnings", classService.earnings());

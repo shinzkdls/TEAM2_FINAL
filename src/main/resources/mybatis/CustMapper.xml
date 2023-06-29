@@ -34,6 +34,18 @@
     <select id="countall" resultType="Integer">
         SELECT COUNT(*) AS COUNT
         FROM CUST
+        union all
+        SELECT COUNT(*) AS COUNT
+        FROM CUST
+        WHERE to_char(SIGNDATE, 'yy-MM-dd') = to_char(SYSDATE, 'yy-MM-dd')
+        union all
+        select count(distinct custpin) as mau
+        from custlogin
+        WHERE to_char(logindate, 'yy-MM') = to_char(SYSDATE, 'yy-MM')
+        union all
+        select count(distinct custpin) as dau
+        from custlogin
+        WHERE to_char(logindate, 'yy-MM-dd') = to_char(SYSDATE, 'yy-MM-dd')
     </select>
 
 </mapper>

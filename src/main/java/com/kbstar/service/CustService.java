@@ -38,7 +38,7 @@ public class CustService implements KBService<String, Cust> {
         return mapper.selectall();
     }
 
-    public Integer countall() throws Exception {
+    public List<Integer> countall() throws Exception {
         return mapper.countall();
     }
 }
