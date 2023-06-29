@@ -53,6 +53,7 @@ public class ClassService implements KBService<Integer, ClassBasic> {
         return mapper.countall();
     }
 
+
     public Integer earnings() throws Exception {
         return mapper.earnings();
     }

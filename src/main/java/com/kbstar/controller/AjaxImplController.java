@@ -253,7 +253,7 @@ public class AjaxImplController {
         map.put("recipecount", recipeService.countall());
         map.put("classcount", classService.countall());
         map.put("earnings", classService.earnings());
-        log.info("%%%%%%%%%" + map.toString());
+        map.put("countviews", recipeService.countviews());
         return map;
     }
 }

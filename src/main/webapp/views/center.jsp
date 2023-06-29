@@ -121,91 +121,100 @@
         }
     };
 
-  let center_chart3 ={
-    init:function(){
-      $.ajax({
-        url:'/chart3',
-        success:function(data){
-          center_chart3.display(data);
+    let center_chart3 = {
+        init: function () {
+            $.ajax({
+                url: '/chart3',
+                success: function (data) {
+                    center_chart3.display(data);
+                }
+            })
+        },
+        display: function (data) {
+            Highcharts.chart('container3', {
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: '클래스 유형별 총 결제액',
+                    align: 'left'
+                },
+                subtitle: {
+                    text: '',
+                    align: 'left'
+                },
+                xAxis: {
+                    categories: ['한식', '중식', '일식', '양식', '디저트', '동남아식', '기타'],
+                    title: {
+                        text: null
+                    },
+                    gridLineWidth: 1,
+                    lineWidth: 0
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '결제금액(원)',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    },
+                    gridLineWidth: 0
+                },
+                tooltip: {
+                    valueSuffix: ''
+                },
+                plotOptions: {
+                    bar: {
+                        borderRadius: '50%',
+                        dataLabels: {
+                            enabled: true
+                        },
+                        groupPadding: 0.1
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -40,
+                    y: 80,
+                    floating: true,
+                    borderWidth: 1,
+                    backgroundColor:
+                        Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                    shadow: true
+                },
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: '원',
+                    data: data
+                }]
+            });
         }
-      })
-    },
-    display:function(data){
-      Highcharts.chart('container3', {
-        chart: {
-          type: 'bar'
-        },
-        title: {
-          text: '클래스 유형별 총 결제액',
-          align: 'left'
-        },
-        subtitle: {
-          text: '',
-          align: 'left'
-        },
-        xAxis: {
-          categories: ['한식', '중식', '일식', '양식', '디저트', '동남아식', '기타'],
-          title: {
-            text: null
-          },
-          gridLineWidth: 1,
-          lineWidth: 0
-        },
-        yAxis: {
-          min: 0,
-          title: {
-            text: '결제금액(원)',
-            align: 'high'
-          },
-          labels: {
-            overflow: 'justify'
-          },
-          gridLineWidth: 0
-        },
-        tooltip: {
-          valueSuffix: ''
-        },
-        plotOptions: {
-          bar: {
-            borderRadius: '50%',
-            dataLabels: {
-              enabled: true
-            },
-            groupPadding: 0.1
-          }
-        },
-        legend: {
-          layout: 'vertical',
-          align: 'right',
-          verticalAlign: 'top',
-          x: -40,
-          y: 80,
-          floating: true,
-          borderWidth: 1,
-          backgroundColor:
-                  Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
-          shadow: true
-        },
-        credits: {
-          enabled: false
-        },
-        series: [{
-          name: '원',
-          data: data
-        }]
-      });
-    }
-  };
+    };
 
     let dashboard = {
         init: function () {
             $.ajax({
                 url: '/dashboard',
                 success: function (response) {
-                    $('#custcount').text(response.custcount);
-                    $('#recipecount').text(response.recipecount);
-                    $('#classcount').text(response.classcount);
-                    $('#earnings').text(dashboard.formatCurrency(response.earnings));
+                    $('#custcount').fadeOut(1000, function () {
+                        $(this).text(response.custcount).fadeIn(500);
+                    });
+                    $('#recipecount').fadeOut(1000, function () {
+                        $(this).text("" + response.recipecount + " / " + dashboard.formatCurrency(response.countviews)).fadeIn(500);
+                    });
+                    $('#classcount').fadeOut(1000, function () {
+                        $(this).text(response.classcount).fadeIn(500);
+                    });
+                    $('#earnings').fadeOut(1000, function () {
+                        $(this).text('￦' + dashboard.formatCurrency(response.earnings)).fadeIn(500);
+                    });
+
                 }
             })
         },
@@ -214,22 +223,23 @@
             // 숫자를 3자리마다 쉼표(,)로 구분하여 포맷팅합니다.
             var formattedValue = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             // 앞에 통화 기호를 추가합니다. 예를 들어, '￦'을 사용하려면 '￦'을 추가하면 됩니다.
-            formattedValue = '￦' + formattedValue;
             return formattedValue;
         }
     };
 
     $(function () {
-        center_chart1.init();
-        center_chart2.init();
-        center_chart3.init();
-        dashboard.init();
+            center_chart1.init();
+            center_chart2.init();
+            center_chart3.init();
+            dashboard.init();
 
-        setInterval(center_chart1.init, 2000);
-        setInterval(center_chart2.init, 2000);
-        setInterval(center_chart3.init, 2000);
-        setInterval(dashboard.init, 2000);
-    });
+            setInterval(center_chart1.init, 3000);
+            setInterval(center_chart2.init, 3000);
+            setInterval(center_chart3.init, 3000);
+            setInterval(dashboard.init, 3000);
+        }
+    )
+    ;
 </script>
 <%----------------------------------------------------------------------------------------------------------------%>
 <!-- Begin Page Content -->
@@ -399,70 +409,79 @@
 
             <!-- Color System -->
             <div class="row">
-              <div class="col-lg-6 mb-4">
-                <div class="card bg-primary text-white shadow">
-                  <div class="card-body" onclick="openLinkInNewWindow('http://127.0.0.1')" style="cursor:pointer;">
-                    <img src="/img/logo.png" style="width: 40px; height: 40px">
-                    &nbsp; Kolly on the Table 바로가기
-                  </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-primary text-white shadow">
+                        <div class="card-body" onclick="openLinkInNewWindow('http://127.0.0.1')"
+                             style="cursor:pointer;">
+                            <img src="/img/logo.png" style="width: 40px; height: 40px">
+                            &nbsp; Kolly on the Table 바로가기
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-lg-6 mb-4">
-                <div class="card bg-success text-white shadow">
-                  <div class="card-body" onclick="openLinkInNewWindow('http://127.0.0.1/recipe/all?type=&ingredients1=&recipelevel=&recipetitle=&sort=0')" style="cursor:pointer;">
-                    <img src="https://cdn-icons-png.flaticon.com/128/3565/3565418.png" style="width: 40px; height: 40px">
-                    &nbsp; 레시피 서비스 바로가기
-                  </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-success text-white shadow">
+                        <div class="card-body"
+                             onclick="openLinkInNewWindow('http://127.0.0.1/recipe/all?type=&ingredients1=&recipelevel=&recipetitle=&sort=0')"
+                             style="cursor:pointer;">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3565/3565418.png"
+                                 style="width: 40px; height: 40px">
+                            &nbsp; 레시피 서비스 바로가기
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-lg-6 mb-4">
-                <div class="card bg-info text-white shadow">
-                  <div class="card-body" onclick="openLinkInNewWindow('http://127.0.0.1/cookingclass/class?location=&type=&classtitle=&sort=1')" style="cursor:pointer;">
-                    <img src="https://cdn-icons-png.flaticon.com/128/9079/9079603.png" style="width: 40px; height: 40px">
-                    &nbsp; 클래스 서비스 바로가기
-                  </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-info text-white shadow">
+                        <div class="card-body"
+                             onclick="openLinkInNewWindow('http://127.0.0.1/cookingclass/class?location=&type=&classtitle=&sort=1')"
+                             style="cursor:pointer;">
+                            <img src="https://cdn-icons-png.flaticon.com/128/9079/9079603.png"
+                                 style="width: 40px; height: 40px">
+                            &nbsp; 클래스 서비스 바로가기
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-lg-6 mb-4">
-                <div class="card bg-warning text-white shadow">
-                  <div class="card-body" onclick="openLinkInNewWindow('http://127.0.0.1/contacts')" style="cursor:pointer;">
-                    <img src="https://cdn-icons-png.flaticon.com/128/2343/2343694.png" style="width: 40px; height: 40px">
-                    &nbsp; 컨택트 서비스 바로가기
-                  </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-warning text-white shadow">
+                        <div class="card-body" onclick="openLinkInNewWindow('http://127.0.0.1/contacts')"
+                             style="cursor:pointer;">
+                            <img src="https://cdn-icons-png.flaticon.com/128/2343/2343694.png"
+                                 style="width: 40px; height: 40px">
+                            &nbsp; 컨택트 서비스 바로가기
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-lg-6 mb-4">
-                <div class="card bg-danger text-white shadow">
-                  <div class="card-body">
-                    Danger
-                    <div class="text-white-50 small">#e74a3b</div>
-                  </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-danger text-white shadow">
+                        <div class="card-body">
+                            Danger
+                            <div class="text-white-50 small">#e74a3b</div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-lg-6 mb-4">
-                <div class="card bg-secondary text-white shadow">
-                  <div class="card-body">
-                    Secondary
-                    <div class="text-white-50 small">#858796</div>
-                  </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-secondary text-white shadow">
+                        <div class="card-body">
+                            Secondary
+                            <div class="text-white-50 small">#858796</div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-lg-6 mb-4">
-                <div class="card bg-light text-black shadow">
-                  <div class="card-body">
-                    Light
-                    <div class="text-black-50 small">#f8f9fc</div>
-                  </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-light text-black shadow">
+                        <div class="card-body">
+                            Light
+                            <div class="text-black-50 small">#f8f9fc</div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-lg-6 mb-4">
-                <div class="card bg-dark text-white shadow">
-                  <div class="card-body">
-                    Dark
-                    <div class="text-white-50 small">#5a5c69</div>
-                  </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-dark text-white shadow">
+                        <div class="card-body">
+                            Dark
+                            <div class="text-white-50 small">#5a5c69</div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
 
         </div>

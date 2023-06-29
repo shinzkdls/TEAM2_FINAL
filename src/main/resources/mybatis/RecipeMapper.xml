@@ -36,4 +36,9 @@
         FROM recipe_basic
     </select>
 
+    <select id="countviews" resultType="Integer">
+        SELECT sum(views) AS countviews
+        FROM recipe_basic
+    </select>
+
 </mapper>

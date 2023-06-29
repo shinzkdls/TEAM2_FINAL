@@ -53,4 +53,8 @@ public class RecipeService implements KBService<Integer, RecipeBasic> {
         return mapper.countall();
     }
 
+    public Integer countviews() throws Exception {
+        return mapper.countviews();
+    }
+
 }

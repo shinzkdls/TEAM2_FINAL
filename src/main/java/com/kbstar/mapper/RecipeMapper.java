@@ -11,4 +11,6 @@ public interface RecipeMapper extends KBMapper<Integer, RecipeBasic> {
     public RecipeBasic selectNew();
 
     public Integer countall() throws Exception;
+
+    public Integer countviews() throws Exception;
 }

@@ -12,5 +12,6 @@ public interface ClassMapper extends KBMapper<Integer, ClassBasic> {
 
     public Integer countall() throws Exception;
 
+
     public Integer earnings() throws Exception;
 }
