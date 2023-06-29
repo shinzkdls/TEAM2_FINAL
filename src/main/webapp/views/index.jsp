@@ -55,26 +55,26 @@
                     }
                 }
             });
-            $('#alertsDropdown').click(function (){
+            $('#alertsDropdown').click(function () {
                 $.ajax({
-                    url:'/contactCheck',
-                    success: function(contacts) {
+                    url: '/contactCheck',
+                    success: function (contacts) {
                         let html = '';
-                        contacts.forEach(function(contact) {
-                            html += '<a class="dropdown-item d-flex align-items-center" href="/contact/detail?contactpin='+contact.contactpin
+                        contacts.forEach(function (contact) {
+                            html += '<a class="dropdown-item d-flex align-items-center" href="/contact/detail?contactpin=' + contact.contactpin
                                 + '"><div class="font-weight-bold"><div class="text-truncate"></div>'
-                                +'<div class="small text-black-50">' + contact.contacttitle
-                                +'<div class="small text-gray-500">'  + contact.contactdate;
-                            if(contact.days_elapsed != 0 ){
-                                html +='<span class="badge" style="color: red">'+ '+' +contact.days_elapsed+'</span>' //경과일 0이면 표시 안함.
-                            }else {
-                                html +='<span class="badge" style="color: black">TODAY</span>'
+                                + '<div class="small text-black-50">' + contact.contacttitle
+                                + '<div class="small text-gray-500">' + contact.contactdate;
+                            if (contact.days_elapsed != 0) {
+                                html += '<span class="badge" style="color: red">' + '+' + contact.days_elapsed + '</span>' //경과일 0이면 표시 안함.
+                            } else {
+                                html += '<span class="badge" style="color: black">TODAY</span>'
                             }
-                            html +='</div></div></div></a>';
+                            html += '</div></div></div></a>';
                         });
                         $('#alerts_center').html(html); // 변경하려는 테이블 body 요소의 ID. 실제 ID로 바꿔야 함
                     },
-                    error: function(request, status, error) {
+                    error: function (request, status, error) {
                         console.error("데이터를 불러오는데 실패했습니다 : ", error);
                     }
                 })
@@ -97,7 +97,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
             <div class="sidebar-brand-icon rotate-n-15">
-<%--                <i class="fas fa-laugh-wink"></i>--%>
+                <%--                <i class="fas fa-laugh-wink"></i>--%>
                 <img style="width: 40px; height: 40px;" src="/img/logo.png"/>
             </div>
             <div class="sidebar-brand-text mx-3">Kolly</div>
@@ -126,13 +126,13 @@
                 <i class="fas fa-fw fa-regular fa-user"></i>
                 <span>Customer</span>
             </a>
-<%--            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">--%>
-<%--                <div class="bg-white py-2 collapse-inner rounded">--%>
-<%--                    <h6 class="collapse-header">Customer Managements:</h6>--%>
-<%--                    <a class="collapse-item" href="/cust/add">add</a>--%>
-<%--                    <a class="collapse-item" href="/cust/all">all</a>--%>
-<%--                </div>--%>
-<%--            </div>--%>
+            <%--            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">--%>
+            <%--                <div class="bg-white py-2 collapse-inner rounded">--%>
+            <%--                    <h6 class="collapse-header">Customer Managements:</h6>--%>
+            <%--                    <a class="collapse-item" href="/cust/add">add</a>--%>
+            <%--                    <a class="collapse-item" href="/cust/all">all</a>--%>
+            <%--                </div>--%>
+            <%--            </div>--%>
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
@@ -176,90 +176,89 @@
         </li>
 
         <!-- Divider -->
-<%--        <hr class="sidebar-divider">--%>
+        <%--        <hr class="sidebar-divider">--%>
 
         <!-- Heading -->
-<%--        <div class="sidebar-heading">--%>
-<%--            Addons--%>
-<%--        </div>--%>
+        <%--        <div class="sidebar-heading">--%>
+        <%--            Addons--%>
+        <%--        </div>--%>
 
         <!-- Nav Item - Pages Collapse Menu -->
-<%--        <li class="nav-item">--%>
-<%--            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"--%>
-<%--               aria-expanded="true" aria-controls="collapsePages">--%>
-<%--                <i class="fas fa-fw fa-folder"></i>--%>
-<%--                <span>Pages</span>--%>
-<%--            </a>--%>
-<%--            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">--%>
-<%--                <div class="bg-white py-2 collapse-inner rounded">--%>
-<%--                    <h6 class="collapse-header">Login Screens:</h6>--%>
-<%--                    <a class="collapse-item" href="login.html">Login</a>--%>
-<%--                    <a class="collapse-item" href="register.html">Register</a>--%>
-<%--                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>--%>
-<%--                    <div class="collapse-divider"></div>--%>
-<%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
-<%--                    <a class="collapse-item" href="404.html">404 Page</a>--%>
-<%--                    <a class="collapse-item" href="blank.html">Blank Page</a>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </li>--%>
+        <%--        <li class="nav-item">--%>
+        <%--            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"--%>
+        <%--               aria-expanded="true" aria-controls="collapsePages">--%>
+        <%--                <i class="fas fa-fw fa-folder"></i>--%>
+        <%--                <span>Pages</span>--%>
+        <%--            </a>--%>
+        <%--            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">--%>
+        <%--                <div class="bg-white py-2 collapse-inner rounded">--%>
+        <%--                    <h6 class="collapse-header">Login Screens:</h6>--%>
+        <%--                    <a class="collapse-item" href="login.html">Login</a>--%>
+        <%--                    <a class="collapse-item" href="register.html">Register</a>--%>
+        <%--                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>--%>
+        <%--                    <div class="collapse-divider"></div>--%>
+        <%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
+        <%--                    <a class="collapse-item" href="404.html">404 Page</a>--%>
+        <%--                    <a class="collapse-item" href="blank.html">Blank Page</a>--%>
+        <%--                </div>--%>
+        <%--            </div>--%>
+        <%--        </li>--%>
 
         <!-- Nav Item - Charts -->
-<%--        <li class="nav-item">--%>
-<%--            <a class="nav-link" href="/charts">--%>
-<%--                <i class="fas fa-fw fa-chart-area"></i>--%>
-<%--                <span>Charts</span></a>--%>
-<%--        </li>--%>
+        <%--        <li class="nav-item">--%>
+        <%--            <a class="nav-link" href="/charts">--%>
+        <%--                <i class="fas fa-fw fa-chart-area"></i>--%>
+        <%--                <span>Charts</span></a>--%>
+        <%--        </li>--%>
 
-<%--        <!-- Nav Item - Tables -->--%>
-<%--        <li class="nav-item">--%>
-<%--            <a class="nav-link" href="/tables">--%>
-<%--                <i class="fas fa-fw fa-table"></i>--%>
-<%--                <span>Tables</span></a>--%>
-<%--        </li>--%>
+        <%--        <!-- Nav Item - Tables -->--%>
+        <%--        <li class="nav-item">--%>
+        <%--            <a class="nav-link" href="/tables">--%>
+        <%--                <i class="fas fa-fw fa-table"></i>--%>
+        <%--                <span>Tables</span></a>--%>
+        <%--        </li>--%>
 
         <!-- Nav Item - Tables -->
-<%--        <li class="nav-item">--%>
-<%--            <a class="nav-link" href="/pic">--%>
-<%--                <i class="fas fa-fw fa-table"></i>--%>
-<%--                <span>Picture</span></a>--%>
-<%--        </li>--%>
+        <%--        <li class="nav-item">--%>
+        <%--            <a class="nav-link" href="/pic">--%>
+        <%--                <i class="fas fa-fw fa-table"></i>--%>
+        <%--                <span>Picture</span></a>--%>
+        <%--        </li>--%>
 
-<%--        <!-- Nav Item - Live Chart -->--%>
-<%--        <li  class="nav-item">--%>
-<%--            <a class="nav-link" href="/livechart">--%>
-<%--                <i class="fas fa-fw fa-chart-area"></i>--%>
-<%--                <span>Live Chart</span></a>--%>
-<%--        </li>--%>
+        <%--        <!-- Nav Item - Live Chart -->--%>
+        <%--        <li  class="nav-item">--%>
+        <%--            <a class="nav-link" href="/livechart">--%>
+        <%--                <i class="fas fa-fw fa-chart-area"></i>--%>
+        <%--                <span>Live Chart</span></a>--%>
+        <%--        </li>--%>
 
         <!-- Nav Item - websocket -->
-         <c:if test="${loginadm != null}">
-             <li class="nav-item">
-                 <a class="nav-link" href="/websocket">
-                     <i class="fas fa-fw fa-solid fa-comments"></i>
-                     <span>websocket</span></a>
-             </li>
-         </c:if>
+        <c:if test="${loginadm != null}">
+            <li class="nav-item">
+                <a class="nav-link" href="/websocket">
+                    <i class="fas fa-fw fa-solid fa-comments"></i>
+                    <span>websocket</span></a>
+            </li>
+        </c:if>
 
 
         <!-- Nav Item - Chat bot -->
-<%--        <li class="nav-item">--%>
-<%--            <a class="nav-link" href="/chatbot">--%>
-<%--                <i class="fas fa-fw fa-solid fa-headset"></i>--%>
-<%--                <span>Chat bot</span></a>--%>
-<%--        </li>--%>
+        <%--        <li class="nav-item">--%>
+        <%--            <a class="nav-link" href="/chatbot">--%>
+        <%--                <i class="fas fa-fw fa-solid fa-headset"></i>--%>
+        <%--                <span>Chat bot</span></a>--%>
+        <%--        </li>--%>
 
         <!-- Nav Item - Chat GPT -->
-<%--        <li class="nav-item">--%>
-<%--            <a class="nav-link" href="/gpt">--%>
-<%--                <i class="fas fa-fw fa-solid fa-brain"></i>--%>
-<%--                <span>Chat GPT</span></a>--%>
-<%--        </li>--%>
-
+        <%--        <li class="nav-item">--%>
+        <%--            <a class="nav-link" href="/gpt">--%>
+        <%--                <i class="fas fa-fw fa-solid fa-brain"></i>--%>
+        <%--                <span>Chat GPT</span></a>--%>
+        <%--        </li>--%>
 
 
         <!-- Divider -->
-<%--        <hr class="sidebar-divider d-none d-md-block">--%>
+        <%--        <hr class="sidebar-divider d-none d-md-block">--%>
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
@@ -285,45 +284,45 @@
                 </button>
 
                 <!-- Topbar Search -->
-<%--                <form--%>
-<%--                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">--%>
-<%--                    <div class="input-group">--%>
-<%--                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."--%>
-<%--                               aria-label="Search" aria-describedby="basic-addon2">--%>
-<%--                        <div class="input-group-append">--%>
-<%--                            <button class="btn btn-primary" type="button">--%>
-<%--                                <i class="fas fa-search fa-sm"></i>--%>
-<%--                            </button>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </form>--%>
+                <%--                <form--%>
+                <%--                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">--%>
+                <%--                    <div class="input-group">--%>
+                <%--                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."--%>
+                <%--                               aria-label="Search" aria-describedby="basic-addon2">--%>
+                <%--                        <div class="input-group-append">--%>
+                <%--                            <button class="btn btn-primary" type="button">--%>
+                <%--                                <i class="fas fa-search fa-sm"></i>--%>
+                <%--                            </button>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                </form>--%>
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-<%--                    <li class="nav-item dropdown no-arrow d-sm-none">--%>
-<%--                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"--%>
-<%--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
-<%--                            <i class="fas fa-search fa-fw"></i>--%>
-<%--                        </a>--%>
-<%--                        <!-- Dropdown - Messages -->--%>
-<%--                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"--%>
-<%--                             aria-labelledby="searchDropdown">--%>
-<%--                            <form class="form-inline mr-auto w-100 navbar-search">--%>
-<%--                                <div class="input-group">--%>
-<%--                                    <input type="text" class="form-control bg-light border-0 small"--%>
-<%--                                           placeholder="Search for..." aria-label="Search"--%>
-<%--                                           aria-describedby="basic-addon2">--%>
-<%--                                    <div class="input-group-append">--%>
-<%--                                        <button class="btn btn-primary" type="button">--%>
-<%--                                            <i class="fas fa-search fa-sm"></i>--%>
-<%--                                        </button>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </form>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
+                    <%--                    <li class="nav-item dropdown no-arrow d-sm-none">--%>
+                    <%--                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"--%>
+                    <%--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
+                    <%--                            <i class="fas fa-search fa-fw"></i>--%>
+                    <%--                        </a>--%>
+                    <%--                        <!-- Dropdown - Messages -->--%>
+                    <%--                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"--%>
+                    <%--                             aria-labelledby="searchDropdown">--%>
+                    <%--                            <form class="form-inline mr-auto w-100 navbar-search">--%>
+                    <%--                                <div class="input-group">--%>
+                    <%--                                    <input type="text" class="form-control bg-light border-0 small"--%>
+                    <%--                                           placeholder="Search for..." aria-label="Search"--%>
+                    <%--                                           aria-describedby="basic-addon2">--%>
+                    <%--                                    <div class="input-group-append">--%>
+                    <%--                                        <button class="btn btn-primary" type="button">--%>
+                    <%--                                            <i class="fas fa-search fa-sm"></i>--%>
+                    <%--                                        </button>--%>
+                    <%--                                    </div>--%>
+                    <%--                                </div>--%>
+                    <%--                            </form>--%>
+                    <%--                        </div>--%>
+                    <%--                    </li>--%>
 
                     <!-- Nav Item - Alerts -->
                     <li class="nav-item dropdown no-arrow mx-1">
@@ -350,36 +349,37 @@
                                     </div>
                                 </a>
                             </div>
-                            <a class="dropdown-item text-center small text-black-500" href="/contact/all">Show All Contacts</a>
+                            <a class="dropdown-item text-center small text-black-500" href="/contact/all">Show All
+                                Contacts</a>
                         </div>
                     </li>
 
-<%--                    <!-- Nav Item - Messages -->--%>
-<%--                     <li class="nav-item dropdown no-arrow mx-1">--%>
-<%--                         <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"--%>
-<%--                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
-<%--                             <i class="fas fa-envelope fa-fw"></i>--%>
-<%--                             <!-- Counter - Messages -->--%>
-<%--                             <span class="badge badge-danger badge-counter">7</span>--%>
-<%--                         </a>--%>
-<%--                         <!-- Dropdown - Messages -->--%>
-<%--                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"--%>
-<%--                              aria-labelledby="messagesDropdown">--%>
-<%--                             <h6 class="dropdown-header">--%>
-<%--                                 Message Center--%>
-<%--                             </h6>--%>
-<%--                             <a class="dropdown-item d-flex align-items-center" href="#">--%>
-<%--                                 <div class="font-weight-bold">--%>
-<%--                                     <div class="text-truncate">Hi there! I am wondering if you can help me with a--%>
-<%--                                         problem I've been having.--%>
-<%--                                     </div>--%>
-<%--                                     <div class="small text-gray-500">Emily Fowler · 58m--%>
-<%--                                         <span class="badge" style="color: red">7</span></div>--%>
-<%--                                 </div>--%>
-<%--                             </a>--%>
-<%--                             <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>--%>
-<%--                         </div>--%>
-<%--                     </li>--%>
+                    <%--                    <!-- Nav Item - Messages -->--%>
+                    <%--                     <li class="nav-item dropdown no-arrow mx-1">--%>
+                    <%--                         <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"--%>
+                    <%--                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
+                    <%--                             <i class="fas fa-envelope fa-fw"></i>--%>
+                    <%--                             <!-- Counter - Messages -->--%>
+                    <%--                             <span class="badge badge-danger badge-counter">7</span>--%>
+                    <%--                         </a>--%>
+                    <%--                         <!-- Dropdown - Messages -->--%>
+                    <%--                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"--%>
+                    <%--                              aria-labelledby="messagesDropdown">--%>
+                    <%--                             <h6 class="dropdown-header">--%>
+                    <%--                                 Message Center--%>
+                    <%--                             </h6>--%>
+                    <%--                             <a class="dropdown-item d-flex align-items-center" href="#">--%>
+                    <%--                                 <div class="font-weight-bold">--%>
+                    <%--                                     <div class="text-truncate">Hi there! I am wondering if you can help me with a--%>
+                    <%--                                         problem I've been having.--%>
+                    <%--                                     </div>--%>
+                    <%--                                     <div class="small text-gray-500">Emily Fowler · 58m--%>
+                    <%--                                         <span class="badge" style="color: red">7</span></div>--%>
+                    <%--                                 </div>--%>
+                    <%--                             </a>--%>
+                    <%--                             <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>--%>
+                    <%--                         </div>--%>
+                    <%--                     </li>--%>
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -404,7 +404,7 @@
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small">${loginadm.adminName}</span>
                                     <img class="img-profile rounded-circle"
-                                         src="/uimg/kbstar_profileimg.jpg">
+                                         src="/img/undraw_profile.svg">
                                 </a>
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -423,7 +423,8 @@
                                         Activity Log
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">
+                                    <a class="dropdown-item" href="/logout" data-toggle="modal"
+                                       data-target="#logoutModal">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Logout
                                     </a>

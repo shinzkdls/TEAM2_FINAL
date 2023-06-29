@@ -6,6 +6,7 @@ import com.kbstar.mapper.RecipeMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -44,7 +45,16 @@ public class RecipeService implements KBService<Integer, RecipeBasic> {
         return mapper.selectall();
     }
 
-    public RecipeBasic getNew() throws Exception{
+    public RecipeBasic getNew() throws Exception {
         return mapper.selectNew();
     }
+
+    public Integer countall() throws Exception {
+        return mapper.countall();
+    }
+
+    public Integer countviews() throws Exception {
+        return mapper.countviews();
+    }
+
 }

@@ -1,12 +1,12 @@
 package com.kbstar.service;
 
 import com.kbstar.dto.ClassBasic;
-import com.kbstar.dto.RecipeBasic;
 import com.kbstar.frame.KBService;
 import com.kbstar.mapper.ClassMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -45,7 +45,16 @@ public class ClassService implements KBService<Integer, ClassBasic> {
         return mapper.selectall();
     }
 
-    public ClassBasic getNew() throws Exception{
+    public ClassBasic getNew() throws Exception {
         return mapper.selectNew();
+    }
+
+    public Integer countall() throws Exception {
+        return mapper.countall();
+    }
+
+
+    public Integer earnings() throws Exception {
+        return mapper.earnings();
     }
 }
