@@ -19,43 +19,39 @@
                     <thead>
                     <tr>
                         <th style="text-align: center;">문의번호</th>
-                        <%--                        <th style="text-align: center;">고객번호</th>--%>
                         <th style="text-align: center; width: 120px;">EMAIL</th>
                         <th style="text-align: center;">제목</th>
-                        <th style="text-align: center;">내용</th>
                         <th style="text-align: center;">등록일자</th>
-                        <%--                        <th style="text-align: center;">관리자 번호</th>--%>
-                        <th style="text-align: center;">관리자 ID</th>
+                        <th style="text-align: center;">답변여부</th>
                         <th style="text-align: center;">답변내용</th>
                         <th style="text-align: center;">답변일자</th>
-                        <th style="text-align: center;">답변등록/수정</th>
+                        <th style="text-align: center;">자세히</th>
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach var="obj" items="${contactList}">
                         <tr>
 
-                            <td>${obj.contactpin}</td>
-                                <%--                                <td>${obj.custpin}</td>--%>
-                            <td>${obj.email}</td>
-                            <td>${obj.contacttitle}</td>
-                            <td>${obj.contactcontent}</td>
-                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.contactdate}"/></td>
-                                <%--                                <td>${obj.adminpin}</td>--%>
-                            <td>${obj.adminid}</td>
-                            <td>${obj.answercontent}</td>
-                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.answerdate}"/></td>
-                            <td>
+                            <td style="text-align: center; vertical-align: middle;">${obj.contactpin}</td>
+                            <td style="text-align: center; vertical-align: middle;">${obj.email}</td>
+                            <td style="text-align: center; vertical-align: middle;">${obj.contacttitle}</td>
+                            <td style="text-align: center; vertical-align: middle;"><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.contactdate}"/></td>
+                            <td style="text-align: center; vertical-align: middle;">
                                 <c:choose>
-                                <c:when test="${obj.answercontent == null}">
-                                <a type="button" class="btn btn-primary"
-                                   href="/contact/detail?contactpin=${obj.contactpin}">답변<br>등록</a></td>
-                            </c:when>
-                            <c:otherwise>
-                                <a type="button" class="btn btn-primary"
-                                   href="/contact/detail?contactpin=${obj.contactpin}">답변<br>수정</a></td>
-                            </c:otherwise>
-                            </c:choose>
+                                    <c:when test="${obj.answerdate == null}">
+                                        N
+                                    </c:when>
+                                    <c:otherwise>
+                                        Y
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">${obj.answercontent}</td>
+                            <td style="text-align: center; vertical-align: middle;"><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.answerdate}"/></td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <a type="button" class="btn btn-primary" style="width: 75px;"
+                                   href="/contact/detail?contactpin=${obj.contactpin}">자세히</a>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
