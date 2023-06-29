@@ -48,10 +48,10 @@
                                 <td>
                                     <c:choose>
                                         <c:when test="${obj.answercontent == null}">
-                                            <a type="button" class="btn btn-primary" href="/contact/detail?contactpin=${obj.contactpin}">답변등록</a></td>
+                                            <a type="button" class="btn btn-primary" style="width: 100px;" href="/contact/detail?contactpin=${obj.contactpin}">답변등록</a></td>
                                         </c:when>
                                         <c:otherwise>
-                                            <a type="button" class="btn btn-primary" href="/contact/detail?contactpin=${obj.contactpin}">답변수정</a></td>
+                                            <a type="button" class="btn btn-primary" style="width: 100px;" href="/contact/detail?contactpin=${obj.contactpin}">답변수정</a></td>
                                         </c:otherwise>
                                     </c:choose>
                         </tr>

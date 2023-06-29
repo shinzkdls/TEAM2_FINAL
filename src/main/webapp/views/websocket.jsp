@@ -48,7 +48,6 @@
             this.stompClient = Stomp.over(socket);
 
             this.stompClient.connect({}, function(frame) {
-                websocket.setConnected(true);
                 console.log('Connected: ' + frame);
                 this.subscribe('/send', function(msg) {
                     $("#all").prepend(
