@@ -8,13 +8,7 @@
         height: 200px;
         overflow: auto;
         border: 2px solid red;
-    }
-
-    #me {
-        width: 400px;
-        height: 200px;
-        overflow: auto;
-        border: 2px solid blue;
+        border-radius: 25px;
     }
 
     #to {
@@ -22,6 +16,7 @@
         height: 200px;
         overflow: auto;
         border: 2px solid green;
+        border-radius: 25px;
     }
 </style>
 
@@ -34,9 +29,6 @@
             websocket.connect();
             $("#sendall").click(function() {
                 websocket.sendAll();
-            });
-            $("#sendme").click(function() {
-                websocket.sendMe();
             });
             $("#sendto").click(function() {
                 websocket.sendTo();
@@ -82,13 +74,6 @@
                 'content1' : $('#totext').val()
             });
             this.stompClient.send('/receiveto', {}, msg);
-        },
-        sendMe:function(){
-            var msg = JSON.stringify({
-                'sendid' : this.id,
-                'content1' : $('#metext').val()
-            });
-            this.stompClient.send("/receiveme", {}, msg);
         }
     };
     $(function(){
@@ -105,22 +90,21 @@
             <h6 class="m-0 font-weight-bold text-primary">chatting</h6>
         </div>
         <div class="card-body">
-            <div id="container"></div>
-            <div class="col-sm-5">
+            <div id="container">
                 <h1 id="adm_id">${loginadm.adminId}</h1>
 
+                <div id="to"></div>
                 <h3>All</h3>
-                <input type="text" id="alltext"><button id="sendall">Send</button>
-                <div id="all"></div>
-
-                <h3>Me</h3>
-                <input type="text" id="metext"><button id="sendme">Send</button>
-                <div id="me"></div>
 
                 <h3>To</h3>
-                <input type="text" id="target">
-                <input type="text" id="totext"><button id="sendto">Send</button>
-                <div id="to"></div>
+                <label class="control-label" for="alltext">공지 사항</label>
+                <div class="form-group" style="display: flex">
+                    <input type="text" class="form-control" id="alltext"><button class="btn btn-outline-primary" id="sendall">발송</button>
+                </div>
+
+
+                <input type="text" id="target"><input type="text" id="totext">
+                <button id="sendto">Send</button>
 
             </div>
         </div>
