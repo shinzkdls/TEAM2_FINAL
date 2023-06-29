@@ -251,8 +251,9 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Kolly on the Table's Dashboard</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+        <a href="http://127.0.0.1" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" style="width: 20px;"> &nbsp;Kolly On the Table</a>
+<%--        <i class="fas fa-download fa-sm text-white-50"></i> Kolly On the Table</a>--%>
     </div>
 
     <!-- Content Row -->
