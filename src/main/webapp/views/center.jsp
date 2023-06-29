@@ -98,7 +98,7 @@
                 tooltip: {
                     headerFormat: '',
                     pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>' +
-                        '개수: <b>{point.y}</b><br/>' +
+                        '<b>{point.y}</b><br/>' +
                         '<b></b><br/>'
                 },
                 series: [{

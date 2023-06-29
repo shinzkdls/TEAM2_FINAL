@@ -3,29 +3,24 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <style>
-
-
     #recived {
-        width: 400px;
-        height: 200px;
-        overflow: auto;
-        border: 2px solid green;
-        border-radius: 25px;
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #f4f4f4;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: left;
     }
+
     #sent {
-        width: 400px;
-        height: 200px;
-        overflow: auto;
-        border: 2px solid green;
-        border-radius: 25px;
-    }
-
-
-    .inp {
-        position: relative;
-        margin: auto;
-        width: 100%;
-        max-width: 280px;
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #f4f4f4;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: right;
     }
 
     .inp .label {
@@ -107,8 +102,6 @@
             d: path("M2,2 C21,17 46,25 74,25 C102,25 118,25 120,25");
         }
     }
-
-
 </style>
 
 <script>
@@ -119,13 +112,18 @@
             this.id = $('#adm_id').text();
             websocket.connect();
             $("#sendall").click(function() {
+                var question = $('#alltext').val(); // 질문 내용 가져오기
+                var senderMessage = question; // 질문 내용
                 $("#sent").prepend(
-                    "<h1>전체발송함</h1>");
+                    "<h4>"+senderMessage+"</h4>");
                 websocket.sendAll();
             });
             $("#sendto").click(function() {
+                var question = $('#totext').val(); // 질문 내용 가져오기
+                var senderMessage = question; // 질문 내용
+
                 $("#sent").prepend(
-                    "<h1>개별발송함</h1>");
+                    "<h4>"+senderMessage+"</h4>");
                 websocket.sendTo();
             });
         },
@@ -181,38 +179,33 @@
         </div>
         <div class="card-body">
             <div id="container">
-                <h1 id="adm_id">${loginadm.adminId}</h1>
+                <h1 id="adm_id" style="display: none;">${loginadm.adminId}</h1>
 
-                <h3>recived</h3>
+                <h5>받은 메세지</h5>
                 <div id="recived"></div>
 
-                <h3>sent</h3>
+                <h5>보낸 메세지</h5>
                 <div id="sent"></div>
-                <label class="control-label" for="alltext">공지 사항</label>
+                <label class="control-label" for="alltext" style="margin-top:50px;">공지사항(전체발송)</label>
                 <div class="form-group" style="display: flex">
-                    <input type="text" class="form-control" id="alltext"><button class="btn btn-outline-primary" id="sendall">발송</button>
+                    <input type="text" class="form-control" id="alltext" style="width: 70%">
+                    <button class="btn btn-outline-primary" id="sendall">발송</button>
                 </div>
                 <label class="control-label" for="alltext">개별 답변</label>
-                <div class="form-group" style="display: flex">
-                    <label for="target" class="inp">
-                        <input type="text"  id="target" placeholder="&nbsp;">
-                        <span class="label">Label</span>
+                <div class="form-group" style="display: flex; flex-direction: column;">
+                    <label for="target" class="inp" style="margin: 0; padding: 0;">
+                        <input type="text"  id="target" placeholder="받는사람 ID를 입력하세요." style="width:30%; margin: 0; padding: 0;">
+                        <span class="label"></span>
                         <svg width="120px" height="26px" viewBox="0 0 120 26">
                             <path d="M0,25 C21,25 46,25 74,25 C102,25 118,25 120,25"></path>
                         </svg>
                         <span class="border"></span>
-                    </label>
-                    <input type="text" class="form-control"  id="totext">
-                    <button class="btn btn-outline-primary" id="sendto">발송</button>
+                    </label><br>
+                    <div style="display: flex";>
+                        <input type="text" class="form-control" id="totext" style="width: 70%">
+                        <button class="btn btn-outline-primary" id="sendto">발송</button>
+                    </div>
                 </div>
-
-
-
-
-
-
-
-
             </div>
         </div>
     </div>

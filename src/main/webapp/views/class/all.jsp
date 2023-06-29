@@ -38,18 +38,18 @@
                     <tbody>
                     <c:forEach var="obj" items="${classList}">
                         <tr>
-                            <td style="text-align: center;">
+                            <td style="text-align: center; vertical-align: middle;">
                                 <img id="class_img" src="/uimg/${obj.thumbnailimg}">
                             </td>
-                            <td style="text-align: center;">${obj.classpin}</td>
-                            <td style="text-align: center;">${obj.classtitle}</td>
-                            <td style="text-align: center;">${obj.custid}</td>
-                            <td style="text-align: center;">${obj.type}</td>
-                            <td style="text-align: center;">${obj.location}</td>
-                            <td style="text-align: center;"><fmt:formatNumber value="${obj.amount}"
+                            <td style="text-align: center; vertical-align: middle;">${obj.classpin}</td>
+                            <td style="text-align: center; vertical-align: middle;">${obj.classtitle}</td>
+                            <td style="text-align: center; vertical-align: middle;">${obj.custid}</td>
+                            <td style="text-align: center; vertical-align: middle;">${obj.type}</td>
+                            <td style="text-align: center; vertical-align: middle;">${obj.location}</td>
+                            <td style="text-align: center; vertical-align: middle;"><fmt:formatNumber value="${obj.amount}"
                                                                               pattern="#,##0"/></td>
-                            <td style="text-align: center;">${obj.classdate.substring(0,10)}</td>
-                            <td style="text-align: center;">
+                            <td style="text-align: center; vertical-align: middle;">${obj.classdate.substring(0,10)}</td>
+                            <td style="text-align: center; vertical-align: middle;">
                                 <form action="/class/deleteImpl" method="post"
                                       onsubmit="return confirm('정말로 삭제하시겠습니까?');">
                                     <input type="hidden" name="classpin" value="${obj.classpin}"/>

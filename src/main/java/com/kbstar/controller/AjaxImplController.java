@@ -170,12 +170,10 @@ public class AjaxImplController {
                 chinese.put("name", "중식");
                 chinese.put("y", c.getTotal());
                 chinese.put("z", c.getTotal());
-
             } else if (c.getType().equals("일식")) {
                 japanese.put("name", "일식");
                 japanese.put("y", c.getTotal());
                 japanese.put("z", c.getTotal());
-
             } else if (c.getType().equals("동남아식")) {
                 asean.put("name", "동남아식");
                 asean.put("y", c.getTotal());
