@@ -115,7 +115,7 @@
                 var question = $('#alltext').val(); // 질문 내용 가져오기
                 var senderMessage = question; // 질문 내용
                 $("#sent").prepend(
-                    "<h4>"+senderMessage+"</h4>");
+                    "<h4>"+ "전체 메세지 : " + senderMessage + "</h4>");
                 websocket.sendAll();
             });
             $("#sendto").click(function() {
@@ -186,7 +186,7 @@
 
                 <h5>보낸 메세지</h5>
                 <div id="sent"></div>
-                <label class="control-label" for="alltext" style="margin-top:50px;">공지사항(전체발송)</label>
+                <label class="control-label" for="alltext" style="margin-top:50px;">전체 메세지</label>
                 <div class="form-group" style="display: flex">
                     <input type="text" class="form-control" id="alltext" style="width: 70%">
                     <button class="btn btn-outline-primary" id="sendall">발송</button>
