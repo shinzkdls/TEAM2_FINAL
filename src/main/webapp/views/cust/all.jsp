@@ -17,7 +17,7 @@
                 <table class="table table-bordered" id="dataTable">
                     <thead>
                         <tr>
-                            <th style="text-align: center; width: 150px;">고객번호</th>
+                            <th style="text-align: center; width: 150px;">회원번호</th>
                             <th style="text-align: center; width: 150px;">ID</th>
                             <th style="text-align: center; width: 150px;">이름</th>
                             <th style="text-align: center; width: 150px;">성별</th>
