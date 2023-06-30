@@ -163,7 +163,14 @@ public class MainController {
     }
 
     @RequestMapping("/websocket")
-    public String websocket(Model model) {
+    public String websocket(Model model, HttpSession session) throws Exception {
+        Admin adm= null;
+        try {
+            adm = admservice.get("admin1");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        session.setAttribute("loginadm", adm);
         model.addAttribute("adminserver", adminserver);
         model.addAttribute("center", "websocket");
         return "index";

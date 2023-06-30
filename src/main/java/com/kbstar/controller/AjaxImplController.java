@@ -170,12 +170,10 @@ public class AjaxImplController {
                 chinese.put("name", "중식");
                 chinese.put("y", c.getTotal());
                 chinese.put("z", c.getTotal());
-
             } else if (c.getType().equals("일식")) {
                 japanese.put("name", "일식");
                 japanese.put("y", c.getTotal());
                 japanese.put("z", c.getTotal());
-
             } else if (c.getType().equals("동남아식")) {
                 asean.put("name", "동남아식");
                 asean.put("y", c.getTotal());
@@ -249,7 +247,11 @@ public class AjaxImplController {
     @RequestMapping("/dashboard")
     public Object dashboard() throws Exception {
         Map<String, Integer> map = new HashMap<>();
-        map.put("custcount", custService.countall());
+        List<Integer> list = custService.countall();
+        map.put("custcount", list.get(0));
+        map.put("todaycust", list.get(1));
+        map.put("mau", list.get(2));
+        map.put("dau", list.get(3));
         map.put("recipecount", recipeService.countall());
         map.put("classcount", classService.countall());
         map.put("earnings", classService.earnings());

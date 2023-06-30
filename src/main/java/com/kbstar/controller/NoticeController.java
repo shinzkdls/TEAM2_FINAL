@@ -61,4 +61,11 @@ public class NoticeController {
         return "index";
     }
 
+    @RequestMapping("/detail")
+    public String detail(Model model, Integer noticepin) throws Exception {
+        Notice obj = noticeService.get(noticepin);
+        model.addAttribute("obj", obj);
+        model.addAttribute("center",dir + "detail");
+        return "index";
+    }
 }

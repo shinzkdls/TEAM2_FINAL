@@ -36,7 +36,7 @@
                     type: 'column'
                 },
                 title: {
-                    text: '성별에 따른 레시피 좋아요 수'
+                    text: '성별에 따른 레시피 좋아요 비율'
                 },
                 subtitle: {
                     text: ''
@@ -48,7 +48,8 @@
                         '일식',
                         '양식',
                         '디저트',
-                        '동남아식'
+                        '동남아식',
+                        '기타'
                     ],
                     crosshair: true
                 },
@@ -92,13 +93,13 @@
                     type: 'variablepie'
                 },
                 title: {
-                    text: '유형별 레시피 개수',
+                    text: '유형별 레시피 비율',
                     align: 'left'
                 },
                 tooltip: {
                     headerFormat: '',
                     pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>' +
-                        '개수: <b>{point.y}</b><br/>' +
+                        '<b>{point.y}</b><br/>' +
                         '<b></b><br/>'
                 },
                 series: [{
@@ -136,7 +137,7 @@
                     type: 'bar'
                 },
                 title: {
-                    text: '클래스 유형별 총 결제액',
+                    text: '이번달 클래스 유형별 총 결제액',
                     align: 'left'
                 },
                 subtitle: {
@@ -203,16 +204,19 @@
                 url: '/dashboard',
                 success: function (response) {
                     $('#custcount').fadeOut(1000, function () {
-                        $(this).text(response.custcount).fadeIn(500);
+                        $(this).html(dashboard.formatCurrency(189029 + response.custcount) + "<br>" + ' (Today: ' + response.todaycust +
+                            ')'
+                        ).fadeIn(500);
                     });
                     $('#recipecount').fadeOut(1000, function () {
-                        $(this).text("" + response.recipecount + " / " + dashboard.formatCurrency(response.countviews)).fadeIn(500);
+                        $(this).html(dashboard.formatCurrency(5481 + response.recipecount) + "<br>" + " (Views: " + dashboard.formatCurrency(456125 + response.countviews) + ')').fadeIn(500);
                     });
                     $('#classcount').fadeOut(1000, function () {
-                        $(this).text(response.classcount).fadeIn(500);
+                        $(this).html(dashboard.formatCurrency(845 + response.classcount) + "<br>" + " (" + '￦' + dashboard.formatCurrency(205840000 + response.earnings) + ')').fadeIn(500);
                     });
-                    $('#earnings').fadeOut(1000, function () {
-                        $(this).text('￦' + dashboard.formatCurrency(response.earnings)).fadeIn(500);
+                    $('#maudau').fadeOut(1000, function () {
+                        $(this).html("MAU: " + dashboard.formatCurrency(107644 + response.mau) + "<br>" +
+                            "DAU: " + dashboard.formatCurrency(2056 + response.dau)).fadeIn(500);
                     });
 
                 }
@@ -247,9 +251,10 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+        <h1 class="h3 mb-0 text-gray-800">Kolly on the Table's Dashboard</h1>
+        <a href="http://127.0.0.1" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" style="width: 20px;"> &nbsp;Kolly On the Table</a>
+<%--        <i class="fas fa-download fa-sm text-white-50"></i> Kolly On the Table</a>--%>
     </div>
 
     <!-- Content Row -->
@@ -264,7 +269,8 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 The Number of Users
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="custcount">0</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="custcount">0
+                            </div>
                         </div>
                         <div class="col-auto">
                             <i class="fa fa-user"></i>
@@ -283,7 +289,9 @@
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 The Number of Recipes
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="recipecount">0</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="recipecount"
+                            >0
+                            </div>
                         </div>
                         <div class="col-auto">
                             <i class="fa fa-utensils"></i>
@@ -304,15 +312,10 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="classcount">0</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="classcount"
+                                    >0
+                                    </div>
                                 </div>
-                                <%--                                <div class="col">--%>
-                                <%--                                    <div class="progress progress-sm mr-2">--%>
-                                <%--                                        <div class="progress-bar bg-info" role="progressbar"--%>
-                                <%--                                             style="width: 50%" aria-valuenow="50" aria-valuemin="0"--%>
-                                <%--                                             aria-valuemax="100"></div>--%>
-                                <%--                                    </div>--%>
-                                <%--                                </div>--%>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -330,15 +333,14 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                EARNINGS (MONTHLY)
+                                MAU & DAU
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="earnings"><fmt:formatNumber
-                                    value="" type="currency"
-                                    currencyCode="KRW" pattern="###,###원"/>0
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="maudau">
+                                0
                             </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fa fa-won-sign"></i>
+                            <i class="fa fa-users"></i>
                         </div>
                     </div>
                 </div>
@@ -434,7 +436,7 @@
                         <div class="card-body"
                              onclick="openLinkInNewWindow('http://127.0.0.1/cookingclass/class?location=&type=&classtitle=&sort=1')"
                              style="cursor:pointer;">
-                            <img src="https://cdn-icons-png.flaticon.com/128/9079/9079603.png"
+                            <img src="https://cdn-icons-png.flaticon.com/128/4344/4344433.png"
                                  style="width: 40px; height: 40px">
                             &nbsp; 클래스 서비스 바로가기
                         </div>
@@ -447,38 +449,6 @@
                             <img src="https://cdn-icons-png.flaticon.com/128/2343/2343694.png"
                                  style="width: 40px; height: 40px">
                             &nbsp; 컨택트 서비스 바로가기
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="card bg-danger text-white shadow">
-                        <div class="card-body">
-                            Danger
-                            <div class="text-white-50 small">#e74a3b</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="card bg-secondary text-white shadow">
-                        <div class="card-body">
-                            Secondary
-                            <div class="text-white-50 small">#858796</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="card bg-light text-black shadow">
-                        <div class="card-body">
-                            Light
-                            <div class="text-black-50 small">#f8f9fc</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="card bg-dark text-white shadow">
-                        <div class="card-body">
-                            Dark
-                            <div class="text-white-50 small">#5a5c69</div>
                         </div>
                     </div>
                 </div>
