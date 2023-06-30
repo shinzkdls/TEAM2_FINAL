@@ -20,7 +20,6 @@
         border-radius: 25px;
     }
 
-
     .inp {
         position: relative;
         margin: auto;
@@ -205,11 +204,6 @@
                     <input type="text" class="form-control"  id="totext">
                     <button class="btn btn-outline-primary" id="sendto">발송</button>
                 </div>
-
-
-
-
-
 
 
 
