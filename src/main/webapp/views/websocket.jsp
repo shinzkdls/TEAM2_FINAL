@@ -8,9 +8,10 @@
         margin: 0 auto;
         background-color: #f4f4f4;
         padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        text-align: left;
+        border-radius: 20px;
+        overflow: auto;
+        width: 70%;
+        height: 130px;
     }
 
     #sent {
@@ -18,90 +19,147 @@
         margin: 0 auto;
         background-color: #f4f4f4;
         padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        text-align: right;
+        border-radius: 20px;
+        overflow: auto;
+        width: 70%;
+        height: 130px;
     }
+     #body {
+         background-image: url('http://www.pngmart.com/files/1/Clouds-PNG-Pic.png'), url('https://myphuket-holiday.com/wp-content/uploads/revslider/homepage/cloud.png'), url('http://pngimg.com/uploads/cloud/cloud_PNG7.png'), url('https://myphuket-holiday.com/wp-content/uploads/revslider/homepage/cloud.png'), linear-gradient(to bottom, #0984e3, #81ecec);
+         background-size: 100%, 40%, 50%, 20%, cover;
+         background-repeat: no-repeat;
+         background-position: -300px 10%, -200px 70%, 200px 40%, 400px 80%, 100%;
+         animation: animater 20s 4s ease-out infinite alternate;
+         padding: 10px 0;
+         min-height: 85vh;
+     }
 
-    .inp .label {
-        position: absolute;
-        top: 16px;
-        left: 0;
-        font-size: 16px;
-        color: #9098A9;
-        font-weight: 500;
-        transform-origin: 0 0;
-        transition: all .2s ease;
-    }
-
-    .inp svg {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        height: 26px;
-        fill: none;
-    }
-
-    .inp svg path {
-        stroke: #C8CCD4;
-        stroke-width: 2;
-        transition: all .2s ease;
-    }
-
-    .inp .border {
-        position: absolute;
-        bottom: 0;
-        left: 120px;
-        height: 2px;
-        right: 0;
-        background: #C8CCD4;
-    }
-
-    .inp input {
-        -webkit-appearance: none;
-        width: 100%;
-        border: 0;
-        font-family: inherit;
-        padding: 12px 0;
-        height: 48px;
-        font-size: 16px;
-        font-weight: 500;
-        background: none;
-        border-radius: 0;
-        color: #223254;
-        transition: all .15s ease;
-    }
-
-    .inp input:not(:placeholder-shown) + span {
-        color: #5A667F;
-        transform: translateY(-26px) scale(.75);
-    }
-
-    .inp input:focus {
-        background: none;
-        outline: none;
-    }
-
-    .inp input:focus + span {
-        color: #0077FF;
-        transform: translateY(-26px) scale(.75);
-        transition-delay: .1s;
-    }
-
-    .inp input:focus + span + svg path {
-        stroke: #0077FF;
-        animation: elasticInput .4s ease forwards;
-    }
-
-    .inp input:focus + span + .border {
-        background: #0077FF;
-    }
-
-    @keyframes elasticInput {
-        50% {
-            d: path("M2,2 C21,17 46,25 74,25 C102,25 118,25 120,25");
+    @keyframes animater {
+        to {
+            background-position: 200px 10%, 500px 70%, 600px 40%, 800px 80%, 100%;
+            background-size: 100%, 40%, 50%, 20%, cover;
         }
     }
+      .chat {
+        display: flex;
+        align-items: flex-start;
+        padding: 0px 20px 20px 20px;
+    }
+
+      .chat .icon,img {
+        position: relative;
+        overflow: hidden;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #eee;
+    }
+
+      .chat .icon i {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        font-size: 2.5rem;
+        color: #aaa;
+        transform: translateX(-50%);
+    }
+
+      .chat .textbox {
+        position: relative;
+        display: inline-block;
+        max-width: calc(100% - 70px);
+        padding: 10px;
+        margin-top: 7px;
+        font-size: 13px;
+        border-radius: 10px;
+          color: black;
+    }
+
+      .chat .textbox::before {
+        position: absolute;
+        display: block;
+        top: 0;
+        font-size: 1.5rem;
+    }
+
+      .received .textbox {
+        margin-left: 20px;
+        background-color: #ddd;
+    }
+
+      .received .textbox::before {
+        left: -15px;
+        content: "◀";
+        color: #ddd;
+    }
+
+      .sent {
+        flex-direction: row-reverse;
+    }
+
+      .sent .textbox {
+        margin-right: 20px;
+        background-color: #F9EB54;
+    }
+      .sent .textbox::before {
+        right: -15px;
+        content: "▶";
+        color: #F9EB54;
+    }
+    .form-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        height:60px;
+        position: sticky;
+    }
+    .test {
+        position: relative;
+    }
+
+    /* Style the input field */
+    .form-container input[type=text] {
+        width: 70%;
+        padding: 12px;
+        border: none;
+        border-radius: 25px;
+        outline: none;
+        font-size: 16px;
+        background-color: #f1f1f1;
+        margin-right: 10px;
+    }
+
+    /* Style the submit button */
+    .form-container button {
+        width: 20%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    /* Add a hover effect to the button */
+    .form-container button:hover {
+        opacity: 0.8;
+    }
+    .time {
+        font-size: 12px;
+        color: #777;
+    }
+    #header {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        padding: 5px 0 0 15px;
+        background-color: #A8C0D9;
+    }
+
+
 </style>
 
 <script>
@@ -111,19 +169,35 @@
         init:function(){
             this.id = $('#adm_id').text();
             websocket.connect();
+            $("#totext").keypress(function(event) { // enter 시에도 실행
+                if (event.which === 13) {
+                    event.preventDefault();
+                    scrollToBottom();
+                    if($("#target").val()==""){ //all, to 구분. 버튼 클릭 시 all 안됨..
+                        $("#sendall").click();
+                    }else {
+                        $("#sendto").click();
+                    }
+                }
+            });
             $("#sendall").click(function() {
-                var question = $('#alltext').val(); // 질문 내용 가져오기
-                var senderMessage = question; // 질문 내용
-                $("#sent").prepend(
-                    "<h4>"+ "전체 메세지 : " + senderMessage + "</h4>");
+                var question = $('#totext').val(); // 질문 내용 가져오기
+                var senderMessage = 'to. 전체 : '+ question; // 질문 내용
+                var senderTime = new Date().toLocaleTimeString(); // 현재 시간
+                var isSender = true; // 사용자가 보낸 메시지 여부
+                var chatMessageHtml = createChatMessage(senderMessage, senderTime, isSender);
+                scrollToBottom();
+                $('#body').append(chatMessageHtml);
                 websocket.sendAll();
             });
             $("#sendto").click(function() {
                 var question = $('#totext').val(); // 질문 내용 가져오기
-                var senderMessage = question; // 질문 내용
-
-                $("#sent").prepend(
-                    "<h4>"+senderMessage+"</h4>");
+                var senderMessage = 'to. '+$('#target').val()+' : ' + question; // 질문 내용
+                var senderTime = new Date().toLocaleTimeString(); // 현재 시간
+                var isSender = true; // 사용자가 보낸 메시지 여부
+                var chatMessageHtml = createChatMessage(senderMessage, senderTime, isSender);
+                scrollToBottom();
+                $('#body').append(chatMessageHtml);
                 websocket.sendTo();
             });
         },
@@ -134,24 +208,24 @@
 
             this.stompClient.connect({}, function(frame) {
                 console.log('Connected: ' + frame);
-                this.subscribe('/send', function(msg) {
-                    $("#recived").prepend(
-                        "<h4>" + JSON.parse(msg.body).sendid +":"+
-                        JSON.parse(msg.body).content1
-                        + "</h4>");
-                });
                 this.subscribe('/send/to/'+sid, function(msg) {
-                    $("#recived").prepend(
-                        "<h4>" + JSON.parse(msg.body).sendid +":"+
-                        JSON.parse(msg.body).content1
-                        + "</h4>");
+                    var answer = 'from. '+JSON.parse(msg.body).sendid+' : ' +JSON.parse(msg.body).content1; // 첫 번째 대답 가져오기
+                    var time2 = new Date().toLocaleTimeString(); // 현재 시간
+
+                    var receiverMessage = answer; // 답변 내용
+                    var receiverTime = time2; // 답변 시간
+                    var isSender = false; // 사용자가 보낸 메시지 여부
+
+                    var chatMessageHtml = createChatMessage(receiverMessage, receiverTime, isSender);
+                    scrollToBottom();
+                    $('#body').append(chatMessageHtml);
                 });
             });
         },
         sendAll:function(){
             var msg = JSON.stringify({
                 'sendid' : this.id,
-                'content1' : $("#alltext").val()
+                'content1' : $("#totext").val()
             });
             this.stompClient.send("/receiveall", {}, msg);
         },
@@ -168,47 +242,34 @@
         websocket.init();
     })
 
+    // 채팅 메시지 생성 함수
+    function createChatMessage(message, time, isSender) {
+        let containerClass = isSender ? "sent" : "received";
+        let profile = isSender ? '<img src="/uimg/kbstar_profileimg.jpg">':(${logincust!=null})? '<img src="/uimg/${logincust.custid}_profileimg.jpg">':'<div class="icon"><i class="fa fa-user"></i></div>';
+        let messageHtml = '<div class="chat '+containerClass+'">'+profile+'<div class="textbox">'+message+'<span class="time"><br>'+time+'</span></div></div>';
+
+        return messageHtml;
+    }
+    // 화면 하단이동 함수
+    function scrollToBottom(){
+        $('#body').animate({
+            scrollTop: $('body')[0].scrollHeight
+        }, 1000);
+    };
 </script>
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">chatting</h6>
-        </div>
-        <div class="card-body">
-            <div id="container">
-                <h1 id="adm_id" style="display: none;">${loginadm.adminId}</h1>
-
-                <h5>받은 메세지</h5>
-                <div id="recived"></div>
-
-                <h5>보낸 메세
-                    ''지</h5>
-                <div id="sent"></div>
-                <label class="control-label" for="alltext" style="margin-top:50px;">전체 메세지</label>
-                <div class="form-group" style="display: flex">
-                    <input type="text" class="form-control" id="alltext" style="width: 70%">
-                    <button class="btn btn-outline-primary" id="sendall">발송</button>
-                </div>
-                <label class="control-label" for="alltext">개별 답변</label>
-                <div class="form-group" style="display: flex; flex-direction: column;">
-                    <label for="target" class="inp" style="margin: 0; padding: 0;">
-                        <input type="text"  id="target" placeholder="받는사람 ID를 입력하세요." style="width:30%; margin: 0; padding: 0;">
-                        <span class="label"></span>
-                        <svg width="120px" height="26px" viewBox="0 0 120 26">
-                            <path d="M0,25 C21,25 46,25 74,25 C102,25 118,25 120,25"></path>
-                        </svg>
-                        <span class="border"></span>
-                    </label><br>
-                    <div style="display: flex";>
-                        <input type="text" class="form-control" id="totext" style="width: 70%">
-                        <button class="btn btn-outline-primary" id="sendto">발송</button>
-                    </div>
-                </div>
-            </div>
+    <h1 id="adm_id" style="display: none;">${loginadm.adminId}</h1>
+    <div id="body" >
+    </div>
+    <div class="test card shadow mb-4">
+        <div class="form-container">
+            <input type="text" id="target" style="width: 200px" placeholder="id 입력. 전체 발송시 미입력">
+            <input id="totext" type="text" placeholder="Type your message...">
+            <button id="sendto" type="button">개별 발송</button>
+            <button id="sendall" type="button">전체 발송</button>
         </div>
     </div>
+
     <!-- /.container-fluid -->
 </div>
