@@ -184,7 +184,8 @@
                 <h5>받은 메세지</h5>
                 <div id="recived"></div>
 
-                <h5>보낸 메세지</h5>
+                <h5>보낸 메세
+                    ''지</h5>
                 <div id="sent"></div>
                 <label class="control-label" for="alltext" style="margin-top:50px;">전체 메세지</label>
                 <div class="form-group" style="display: flex">
