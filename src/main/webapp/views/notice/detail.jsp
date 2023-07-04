@@ -39,7 +39,7 @@
                     <thead>
                     <tr>
                         <th class="col-sm-2">공지사항 번호</th>
-                        <th class="col-sm-2">문의일자</th>
+                        <th class="col-sm-2">등록일자</th>
                     </tr>
                     </thead>
                     <tbody>
