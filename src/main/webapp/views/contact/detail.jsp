@@ -77,7 +77,14 @@
                 </div>
                 <div style="display: flex; justify-content: flex-end;">
                     <a href="/contact/all" type="button" class="btn btn-primary" style="margin-right: 10px;">뒤로가기</a>
-                    <button type="button" id="update_btn" class="btn btn-primary">변경</button>
+                    <c:choose>
+                        <c:when test="${obj.answercontent != null}">
+                            <button type="button" id="update_btn" class="btn btn-primary">변경</button>
+                        </c:when>
+                        <c:otherwise>
+                            <button type="button" id="update_btn" class="btn btn-primary">등록</button>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>
