@@ -47,7 +47,7 @@ public class ContactController {
         }catch (Exception e){
             e.getStackTrace();
         }
-        return "redirect:/contact/detail?contactpin="+contact.getContactpin();
+        return "redirect:/contact/all";
         //return "redirect:/contact/all";
     }
 }

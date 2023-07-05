@@ -44,7 +44,7 @@ public class NoticeController {
             noticeService.register(notice);
             pushNotificationUtil.sendTargetMessage(notice.getNoticetitle(), notice.getNoticecontent(), "/", userToken);
         }
-        return "redirect:/";
+        return "redirect:/notice/all";
     }
 
     @RequestMapping("/deleteImpl")

@@ -34,7 +34,7 @@
 
                             <td style="text-align: center; vertical-align: middle;">${obj.contactpin}</td>
                             <td style="text-align: center; vertical-align: middle;">${obj.email}</td>
-                            <td style="text-align: center; vertical-align: middle;">${obj.contacttitle}</td>
+                            <td style="text-align: center; vertical-align: middle; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${obj.contacttitle}</td>
                             <td style="text-align: center; vertical-align: middle;"><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.contactdate}"/></td>
                             <td style="text-align: center; vertical-align: middle;">
                                 <c:choose>
@@ -46,7 +46,7 @@
                                     </c:otherwise>
                                 </c:choose>
                             </td>
-                            <td style="text-align: center; vertical-align: middle;">${obj.answercontent}</td>
+                            <td style="text-align: center; vertical-align: middle; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${obj.answercontent}</td>
                             <td style="text-align: center; vertical-align: middle;"><fmt:formatDate pattern="yyyy-MM-dd" value="${obj.answerdate}"/></td>
                             <td style="text-align: center; vertical-align: middle;">
                                 <a type="button" class="btn btn-primary" style="width: 75px;"
