@@ -46,8 +46,9 @@
                             <td style="text-align: center; vertical-align: middle;">${obj.custid}</td>
                             <td style="text-align: center; vertical-align: middle;">${obj.type}</td>
                             <td style="text-align: center; vertical-align: middle;">${obj.location}</td>
-                            <td style="text-align: center; vertical-align: middle;"><fmt:formatNumber value="${obj.amount}"
-                                                                              pattern="#,##0"/></td>
+                            <td style="text-align: center; vertical-align: middle;"><fmt:formatNumber
+                                    value="${obj.amount}"
+                                    pattern="#,##0"/></td>
                             <td style="text-align: center; vertical-align: middle;">${obj.classdate.substring(0,10)}</td>
                             <td style="text-align: center; vertical-align: middle;">
                                 <form action="/class/deleteImpl" method="post"
@@ -66,3 +67,15 @@
 </div>
 <!-- /.container-fluid -->
 
+<script>
+
+    let maptest = {
+        init: function () {
+            console.log("${mapList}");
+        }
+    };
+
+    $(function () {
+        maptest.init();
+    });
+</script>
