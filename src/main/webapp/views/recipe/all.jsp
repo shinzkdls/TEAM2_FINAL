@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <head>
     <title>OpenAI를 이용한 챗봇</title>
@@ -66,8 +67,12 @@
     const userInput = document.querySelector('#answer');
     // 전송 버튼
     const sendButton = document.querySelector('#sendBtn');
+
     // 발급받은 OpenAI API 키를 변수로 저장
-    const apiKey = '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';
+    // 모델에서 apiKey 값을 가져옵니다.
+    const apiKey = '<%= request.getAttribute("apiKey") %>';
+    // 받아서 쓸 때는 ${apiKey} 이걸로..
+
     // OpenAI API 엔드포인트 주소를 변수로 저장
     const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
 
@@ -88,8 +93,7 @@
             // API 요청의 헤더를 설정
             headers: {
                 'Content-Type': 'application/json',
-                <%--'Authorization': `Bearer ${apiKey}`--%>
-                'Authorization' : 'Bearer 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'
+                'Authorization' : 'Bearer ${apiKey}'
             },
             body: JSON.stringify({
                 model: "gpt-3.5-turbo",  // 사용할 AI 모델
@@ -98,7 +102,7 @@
                     content: prompt // 사용자가 입력한 메시지
                 }, ],
                 temperature: 0.8, // 모델의 출력 다양성
-                max_tokens: 1024, // 응답받을 메시지 최대 토큰(단어) 수 설정
+                max_tokens: 2048, // 응답받을 메시지 최대 토큰(단어) 수 설정
                 top_p: 1, // 토큰 샘플링 확률을 설정
                 frequency_penalty: 0.5, // 일반적으로 나오지 않는 단어를 억제하는 정도
                 presence_penalty: 0.5, // 동일한 단어나 구문이 반복되는 것을 억제하는 정도

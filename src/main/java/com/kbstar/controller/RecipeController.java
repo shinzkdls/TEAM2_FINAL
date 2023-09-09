@@ -20,11 +20,16 @@ public class RecipeController {
     @Value("${uploadimgdir}") /*이미지 저장경로*/
     String imgdir;
 
+    @Value("${chatgpt.api-key}")
+    private String apiKey;
+
     @RequestMapping("/all")
     public String all(Model model) throws Exception {
         List<RecipeBasic> recipeList = recipeService.get();
+        log.info("--------------------------"+apiKey);
         model.addAttribute("recipeList", recipeList);
         model.addAttribute("center",dir + "all");
+        model.addAttribute("apiKey", apiKey);
         return "index";
     }
 
